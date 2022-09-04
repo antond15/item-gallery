@@ -8,7 +8,6 @@ const LeftGroup: NextPage = () => {
       <Select
         placeholder="Search images..."
         icon={<FaSearch />}
-        size="xs"
         variant="filled"
         searchable
         data={[
@@ -19,7 +18,7 @@ const LeftGroup: NextPage = () => {
           { value: '5', label: 'Option 5' },
         ]}
       />
-      <ActionIcon variant="light" color="cyan">
+      <ActionIcon variant="light" color="cyan" size="lg">
         <FaFilter size={16} />
       </ActionIcon>
     </Group>
