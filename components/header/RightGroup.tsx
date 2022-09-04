@@ -8,7 +8,14 @@ const LeftGroup: NextPage = () => {
       <Button variant="subtle" color="cyan" leftIcon={<FaPlus size={16} />}>
         Add new item
       </Button>
-      <ActionIcon variant="light" color="cyan" size="lg">
+      <ActionIcon
+        variant="light"
+        color="cyan"
+        size="lg"
+        component="a"
+        href="https://github.com/antond15/item-gallery"
+        target="_blank"
+      >
         <FaGithub size={20} />
       </ActionIcon>
       <Button variant="filled" color="cyan" leftIcon={<FaSignInAlt size={16} />}>
