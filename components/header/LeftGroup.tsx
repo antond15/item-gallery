@@ -1,10 +1,17 @@
 import type { NextPage } from 'next';
-import { Group, Select, ActionIcon } from '@mantine/core';
+import { Group, Avatar, Select, ActionIcon } from '@mantine/core';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 
 const LeftGroup: NextPage = () => {
   return (
     <Group>
+      <Avatar
+        src="./header_logo.svg"
+        alt="Logo"
+        size={34}
+        component="a"
+        href="https://www.dejv.it/"
+      />
       <Select
         placeholder="Search images..."
         icon={<FaSearch />}
