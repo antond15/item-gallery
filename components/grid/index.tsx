@@ -21,6 +21,7 @@ const data = [
   {
     label: 'Onion',
     src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/onion.png',
+    tags: ['tag1'],
     description: 'Onion is a vegetable that is used in cooking and baking.',
   },
   {

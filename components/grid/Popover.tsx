@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
-import { Stack, Text, Group, Badge } from '@mantine/core';
+import { Stack, Text, Group } from '@mantine/core';
+import TagList from './TagList';
 import { IItem } from '../../interfaces/item';
 
 const Popover: NextPage<IItem> = (props: IItem) => {
@@ -10,17 +11,10 @@ const Popover: NextPage<IItem> = (props: IItem) => {
         userSelect: 'none',
       }}
     >
-      <Text weight={500}>{props.label}</Text>
-
-      {props.tags && (
-        <Group spacing={4}>
-          {props.tags.map((tag, index) => (
-            <Badge key={index} size="sm">
-              {tag}
-            </Badge>
-          ))}
-        </Group>
-      )}
+      <Group position="apart">
+        <Text weight={500}>{props.label}</Text>
+        <TagList tags={props.tags} />
+      </Group>
 
       {props.description && (
         <Text
