@@ -41,7 +41,7 @@ const LeftGroup: NextPage = () => {
           variant="filled"
           color="cyan"
           leftIcon={<FaSignInAlt size={16} />}
-          onClick={() => signIn()}
+          onClick={() => signIn('github')}
         >
           Sign In
         </Button>
