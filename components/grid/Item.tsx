@@ -16,6 +16,7 @@ const Item: NextPage<Props> = (props: Props) => {
         width: '100px',
         borderRadius: theme.radius.sm,
         overflow: 'hidden',
+        userSelect: 'none',
       }}
     >
       <Image src={props.src} alt={props.label} width="100px" height="100px" />
