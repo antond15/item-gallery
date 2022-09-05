@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { SessionProvider } from 'next-auth/react';
 import { MantineProvider } from '@mantine/core';
 import { theme } from '../theme';
 
@@ -16,9 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-        <Component {...pageProps} />
-      </MantineProvider>
+      <SessionProvider session={pageProps.session}>
+        <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+          <Component {...pageProps} />
+        </MantineProvider>
+      </SessionProvider>
     </>
   );
 }

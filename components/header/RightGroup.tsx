@@ -1,13 +1,14 @@
 import type { NextPage } from 'next';
-import { Group, ActionIcon, Button } from '@mantine/core';
-import { FaPlus, FaGithub, FaSignInAlt } from 'react-icons/fa';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { Group, Button, ActionIcon, Divider, Menu } from '@mantine/core';
+import { FaPlus, FaGithub, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import AvatarGroup from './AvatarGroup';
 
 const LeftGroup: NextPage = () => {
+  const { data: session } = useSession();
+
   return (
     <Group>
-      <Button variant="subtle" color="cyan" leftIcon={<FaPlus size={16} />}>
-        Add new item
-      </Button>
       <ActionIcon
         variant="light"
         color="cyan"
@@ -18,9 +19,33 @@ const LeftGroup: NextPage = () => {
       >
         <FaGithub size={20} />
       </ActionIcon>
-      <Button variant="filled" color="cyan" leftIcon={<FaSignInAlt size={16} />}>
-        Sign In
-      </Button>
+
+      <Divider orientation="vertical" />
+
+      {(session?.user && (
+        <Menu trigger="hover">
+          <Menu.Target>
+            <div>
+              <AvatarGroup {...session.user} />
+            </div>
+          </Menu.Target>
+          <Menu.Dropdown>
+            <Menu.Item icon={<FaPlus />}>Add new item</Menu.Item>
+            <Menu.Item color="red" icon={<FaSignOutAlt />} onClick={() => signOut()}>
+              Sign Out
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      )) || (
+        <Button
+          variant="filled"
+          color="cyan"
+          leftIcon={<FaSignInAlt size={16} />}
+          onClick={() => signIn()}
+        >
+          Sign In
+        </Button>
+      )}
     </Group>
   );
 };
