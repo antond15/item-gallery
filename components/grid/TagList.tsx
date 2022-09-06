@@ -34,7 +34,7 @@ const TagList: NextPage<Props> = (props: Props) => {
       <Popover.Dropdown>
         <Stack spacing={4}>
           {tags.map((tag, index) => (
-            <Badge key={index} size="xs">
+            <Badge key={index} size="xs" color={tagData[tag].color}>
               {tagData[tag].label}
             </Badge>
           ))}
