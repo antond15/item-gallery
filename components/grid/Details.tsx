@@ -3,7 +3,7 @@ import { Stack, Text, Group } from '@mantine/core';
 import TagList from './TagList';
 import { IItem } from '../../interfaces/item';
 
-const Popover: NextPage<IItem> = (props: IItem) => {
+const Details: NextPage<IItem> = (props: IItem) => {
   return (
     <Stack
       spacing="xs"
@@ -31,4 +31,4 @@ const Popover: NextPage<IItem> = (props: IItem) => {
   );
 };
 
-export default Popover;
+export default Details;

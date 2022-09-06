@@ -2,9 +2,9 @@ import type { NextPage } from 'next';
 import { HoverCard } from '@mantine/core';
 import { IItem } from '../../interfaces/item';
 import Item from './Item';
-import Popover from './Popover';
+import Details from './Details';
 
-const HoverTarget: NextPage<IItem> = (props: IItem) => {
+const ItemHover: NextPage<IItem> = (props: IItem) => {
   return (
     <HoverCard withArrow width="320px">
       <HoverCard.Target>
@@ -13,10 +13,10 @@ const HoverTarget: NextPage<IItem> = (props: IItem) => {
         </div>
       </HoverCard.Target>
       <HoverCard.Dropdown>
-        <Popover {...props} />
+        <Details {...props} />
       </HoverCard.Dropdown>
     </HoverCard>
   );
 };
 
-export default HoverTarget;
+export default ItemHover;

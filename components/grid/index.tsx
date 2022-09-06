@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useMantineTheme, Box, ScrollArea, SimpleGrid } from '@mantine/core';
-import HoverTarget from './HoverTarget';
+import ItemHover from './ItemHover';
 import type { IGridProps } from '../../interfaces';
 
 const breakPoints = [
@@ -43,7 +43,7 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
         >
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
             {props.items.map((item, index) => (
-              <HoverTarget key={index} {...item} />
+              <ItemHover key={index} {...item} />
             ))}
           </SimpleGrid>
         </ScrollArea>
