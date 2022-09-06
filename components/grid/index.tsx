@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
+import { createContext } from 'react';
 import { useMantineTheme, Box, ScrollArea, SimpleGrid } from '@mantine/core';
 import ItemHover from './ItemHover';
-import type { IGridProps } from '../../interfaces';
+import type { ITag, IGridProps } from '../../interfaces';
 
 const breakPoints = [
   { maxWidth: 1400, cols: 11 },
@@ -14,6 +15,8 @@ const breakPoints = [
   { maxWidth: 650, cols: 4 },
   { maxWidth: 530, cols: 3 },
 ];
+
+export const TagsContext = createContext<ITag[]>([]);
 
 const Grid: NextPage<IGridProps> = (props: IGridProps) => {
   const theme = useMantineTheme();
@@ -42,9 +45,11 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
           }}
         >
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
-            {props.items.map((item, index) => (
-              <ItemHover key={index} {...item} />
-            ))}
+            <TagsContext.Provider value={props.tags}>
+              {props.items.map((item, index) => (
+                <ItemHover key={index} {...item} />
+              ))}
+            </TagsContext.Provider>
           </SimpleGrid>
         </ScrollArea>
       </Box>
