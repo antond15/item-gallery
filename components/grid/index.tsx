@@ -1,47 +1,7 @@
 import type { NextPage } from 'next';
 import { useMantineTheme, Box, ScrollArea, SimpleGrid } from '@mantine/core';
 import HoverTarget from './HoverTarget';
-
-// Temporary dummy data
-const data = [
-  {
-    label: 'Armor',
-    src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/armor.png',
-    tags: ['furniture', 'clothing', 'vegetable', 'food', 'vehicle', 'weapon', 'utility', 'tools'],
-    description:
-      'Armor is a type of clothing worn on the body. It can be made of leather, cloth, or metal.',
-  },
-  {
-    label: 'Bandage',
-    src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/bandage.png',
-    tags: ['tag1', 'tag2', 'tag3'],
-    description:
-      'A bandage is a piece of cloth, or metal that is used to bind or stitch wounds or injuries.',
-  },
-  {
-    label: 'Onion',
-    src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/onion.png',
-    tags: ['tag1'],
-    description: 'Onion is a vegetable that is used in cooking and baking.',
-  },
-  {
-    label: 'Paperbag with long name',
-    src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/paperbag.png',
-    tags: ['tag1', 'tag2', 'tag3'],
-    description: 'Paperbag is a type of paper made from a variety of materials.',
-  },
-  {
-    label: 'Bullet',
-    src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/ammo-9.png',
-    tags: ['tag1', 'tag2', 'tag3'],
-    description: 'Bullet is a type of ammunition used in firearms.',
-  },
-  {
-    label: 'Wrong sized image',
-    src: 'https://media.istockphoto.com/vectors/missing-rubber-stamp-vector-vector-id1213374148',
-    tags: ['tag1', 'tag2', 'tag3'],
-  },
-];
+import type { IGridProps } from '../../interfaces';
 
 const breakPoints = [
   { maxWidth: 1400, cols: 11 },
@@ -55,7 +15,7 @@ const breakPoints = [
   { maxWidth: 530, cols: 3 },
 ];
 
-const Grid: NextPage = () => {
+const Grid: NextPage<IGridProps> = (props: IGridProps) => {
   const theme = useMantineTheme();
 
   return (
@@ -82,7 +42,7 @@ const Grid: NextPage = () => {
           }}
         >
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
-            {data.map((item, index) => (
+            {props.items.map((item, index) => (
               <HoverTarget key={index} {...item} />
             ))}
           </SimpleGrid>

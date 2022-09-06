@@ -1,14 +1,101 @@
 import type { NextPage } from 'next';
 import Header from '../components/header';
 import Grid from '../components/grid';
+import type { IItem, ITag, IGridProps } from '../interfaces';
 
-const Home: NextPage = () => {
+const Home: NextPage<IGridProps> = (props: IGridProps) => {
   return (
     <>
       <Header />
-      <Grid />
+      <Grid {...props} />
     </>
   );
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  // Temporary data
+  const dummyItems: IItem[] = [
+    {
+      label: 'Armor',
+      src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/armor.png',
+      tags: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      description: 'Armor is a clothing worn on the body. It can be made of leather or metal.',
+    },
+    {
+      label: 'Bandage',
+      src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/bandage.png',
+      tags: [2, 6, 7],
+      description: 'Bandage is a piece of cloth used to bind or stitch wounds or injuries.',
+    },
+    {
+      label: 'Onion',
+      src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/onion.png',
+      tags: [8],
+      description: 'Onion is a vegetable that is used in cooking and baking.',
+    },
+    {
+      label: 'Paperbag with long name',
+      src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/paperbag.png',
+      tags: [8, 1, 3],
+      description: 'Paperbag is a type of paper made from a variety of materials.',
+    },
+    {
+      label: 'Bullet',
+      src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/ammo-9.png',
+      tags: [13],
+      description: 'Bullet is a type of ammunition used in firearms.',
+    },
+    {
+      label: 'Wrong sized image',
+      src: 'https://media.istockphoto.com/vectors/missing-rubber-stamp-vector-vector-id1213374148',
+      tags: [4, 3, 2, 1, 0],
+    },
+  ];
+
+  const dummyTags: ITag[] = [
+    {
+      label: 'Furniture',
+      color: 'red',
+    },
+    {
+      label: 'Clothing',
+      color: 'violet',
+    },
+    {
+      label: 'Vegetable',
+      color: 'blue',
+    },
+    {
+      label: 'Food',
+      color: 'cyan',
+    },
+    {
+      label: 'Vehicle',
+      color: 'green',
+    },
+    {
+      label: 'Weapon',
+      color: 'yellow',
+    },
+    {
+      label: 'Utility',
+      color: 'orange',
+    },
+    {
+      label: 'Tools',
+      color: '#ffd700',
+    },
+  ];
+
+  // prisma select
+
+  return {
+    props: {
+      items: dummyItems,
+      tags: dummyTags,
+    },
+    revalidate: 30, // in seconds
+  };
+};
