@@ -1,12 +1,9 @@
 import type { NextPage } from 'next';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { Group, Button, ActionIcon, Divider, Menu } from '@mantine/core';
-import { FaPlus, FaGithub, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-import AvatarGroup from './AvatarGroup';
+import { Group, ActionIcon, Divider } from '@mantine/core';
+import { FaGithub } from 'react-icons/fa';
+import AuthButton from '../auth/AuthButton';
 
 const LeftGroup: NextPage = () => {
-  const { data: session } = useSession();
-
   return (
     <Group>
       <ActionIcon
@@ -19,33 +16,8 @@ const LeftGroup: NextPage = () => {
       >
         <FaGithub size={20} />
       </ActionIcon>
-
       <Divider orientation="vertical" />
-
-      {(session?.user && (
-        <Menu trigger="hover">
-          <Menu.Target>
-            <div>
-              <AvatarGroup {...session.user} />
-            </div>
-          </Menu.Target>
-          <Menu.Dropdown>
-            <Menu.Item icon={<FaPlus />}>Add new item</Menu.Item>
-            <Menu.Item color="red" icon={<FaSignOutAlt />} onClick={() => signOut()}>
-              Sign Out
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      )) || (
-        <Button
-          variant="filled"
-          color="cyan"
-          leftIcon={<FaSignInAlt size={16} />}
-          onClick={() => signIn('github')}
-        >
-          Sign In
-        </Button>
-      )}
+      <AuthButton />
     </Group>
   );
 };
