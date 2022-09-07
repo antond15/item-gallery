@@ -53,3 +53,9 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  label String @unique
+  color String
+}
