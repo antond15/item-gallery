@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { PrismaClient } from '@prisma/client';
 import Header from '../components/header';
 import Grid from '../components/grid';
 import type { IItem, ITag, IGridProps } from '../interfaces';
@@ -20,7 +21,7 @@ export const getStaticProps = async () => {
     {
       label: 'Armor',
       src: 'https://raw.githubusercontent.com/antond15/items/main/public/images/armor.png',
-      tags: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      tags: [1, 2, 3, 4],
       description: 'Armor is a clothing worn on the body. It can be made of leather or metal.',
     },
     {
@@ -54,47 +55,16 @@ export const getStaticProps = async () => {
     },
   ];
 
-  const dummyTags: ITag[] = [
-    {
-      label: 'Furniture',
-      color: 'red',
-    },
-    {
-      label: 'Clothing',
-      color: 'violet',
-    },
-    {
-      label: 'Vegetable',
-      color: 'blue',
-    },
-    {
-      label: 'Food',
-      color: 'cyan',
-    },
-    {
-      label: 'Vehicle',
-      color: 'green',
-    },
-    {
-      label: 'Weapon',
-      color: 'yellow',
-    },
-    {
-      label: 'Utility',
-      color: 'orange',
-    },
-    {
-      label: 'Tools',
-      color: '#ffd700',
-    },
-  ];
+  const prisma = new PrismaClient();
 
-  // prisma select
+  const tags: ITag[] = [];
+  const rawTags = await prisma.tag.findMany();
+  rawTags.map(tag => tags[tag.id] = tag);
 
   return {
     props: {
       items: dummyItems,
-      tags: dummyTags,
+      tags
     },
     revalidate: 30, // in seconds
   };

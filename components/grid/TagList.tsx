@@ -10,9 +10,9 @@ type Props = {
 
 const TagList: NextPage<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const tagData = useContext(TagsContext);
 
-  const tags = props.tags.filter((tagId) => tagId < tagData.length);
+  const tagData = useContext(TagsContext);
+  const itemTags = props.tags.filter(tag => tagData[tag]); // Filter out tags that don't exist
 
   return (
     <Popover opened={isOpen} withArrow>
@@ -23,17 +23,17 @@ const TagList: NextPage<Props> = (props: Props) => {
           variant="light"
           color="cyan"
           compact
-          onClick={() => tags.length > 0 && setIsOpen(!isOpen)}
+          onClick={() => itemTags.length > 0 && setIsOpen(!isOpen)}
           rightIcon={
-            tags.length > 0 && (isOpen ? <FaAngleUp size={12} /> : <FaAngleDown size={12} />)
+            itemTags.length > 0 && (isOpen ? <FaAngleUp size={12} /> : <FaAngleDown size={12} />)
           }
         >
-          {tags.length} {tags.length === 1 ? 'tag' : 'tags'}
+          {itemTags.length} {itemTags.length === 1 ? 'tag' : 'tags'}
         </Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Stack spacing={4}>
-          {tags.map((tag, index) => (
+          {itemTags.map((tag, index) => (
             <Badge key={index} size="xs" color={tagData[tag].color}>
               {tagData[tag].label}
             </Badge>
