@@ -59,13 +59,13 @@ export const getStaticProps = async () => {
 
   const tags: ITag[] = [];
   const rawTags = await prisma.tag.findMany();
-  rawTags.map(tag => tags[tag.id] = tag);
+  rawTags.map((tag) => (tags[tag.id] = tag));
 
   return {
     props: {
       items: dummyItems,
-      tags
+      tags,
     },
-    revalidate: 30, // in seconds
+    revalidate: 300, // in seconds
   };
 };
