@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
-import { useMantineTheme, Box, Image, Text } from '@mantine/core';
+import Image from 'next/image';
+import { useMantineTheme, Box, Text } from '@mantine/core';
 
 type Props = {
   src: string;
@@ -19,7 +20,7 @@ const Item: NextPage<Props> = (props: Props) => {
         userSelect: 'none',
       }}
     >
-      <Image src={props.src} alt={props.label} width="100px" height="100px" />
+      <Image src={props.src} alt={props.label} width="100px" height="100px" layout="responsive" />
       <Text
         align="center"
         style={{

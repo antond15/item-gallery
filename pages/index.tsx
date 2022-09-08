@@ -48,11 +48,6 @@ export const getStaticProps = async () => {
       tags: [13],
       description: 'Bullet is a type of ammunition used in firearms.',
     },
-    {
-      label: 'Wrong sized image',
-      src: 'https://media.istockphoto.com/vectors/missing-rubber-stamp-vector-vector-id1213374148',
-      tags: [4, 3, 2, 1, 0],
-    },
   ];
 
   const prisma = new PrismaClient();
