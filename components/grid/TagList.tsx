@@ -5,14 +5,14 @@ import { TagsContext } from './';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 type Props = {
-  tags: number[];
+  tags?: number[];
 };
 
 const TagList: NextPage<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const tagData = useContext(TagsContext);
-  const itemTags = props.tags.filter((tag) => tagData[tag]); // Filter out tags that don't exist
+  const itemTags = props.tags?.filter((tag) => tagData[tag]) || []; // Filter out tags that don't exist
 
   return (
     <Popover opened={isOpen} withArrow>
