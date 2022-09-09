@@ -60,7 +60,6 @@ model Item {
   description String?  @db.Text
   image       String   @db.Text
   tags        Json?
-  createdAt   DateTime @default(now())
 }
 
 model Tag {

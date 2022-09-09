@@ -4,5 +4,4 @@ export interface IItem {
   description?: string;
   image: string;
   tags?: number[];
-  createdAt?: Date;
 }
