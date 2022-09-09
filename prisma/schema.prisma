@@ -54,6 +54,15 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Item {
+  id          Int      @id @default(autoincrement())
+  label       String
+  description String?  @db.Text
+  image       String   @db.Text
+  tags        Json?
+  createdAt   DateTime @default(now())
+}
+
 model Tag {
   id    Int    @id @default(autoincrement())
   label String @unique
