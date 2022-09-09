@@ -9,7 +9,7 @@ const ItemHover: NextPage<IItem> = (props: IItem) => {
     <HoverCard withArrow width="320px">
       <HoverCard.Target>
         <div>
-          <Item src={props.src} label={props.label} />
+          <Item image={props.image} label={props.label} />
         </div>
       </HoverCard.Target>
       <HoverCard.Dropdown>

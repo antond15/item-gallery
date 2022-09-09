@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useMantineTheme, Box, Text } from '@mantine/core';
 
 type Props = {
-  src: string;
+  image: string;
   label: string;
 };
 
@@ -20,7 +20,7 @@ const Item: NextPage<Props> = (props: Props) => {
         userSelect: 'none',
       }}
     >
-      <Image src={props.src} alt={props.label} width="100px" height="100px" layout="responsive" />
+      <Image src={props.image} alt={props.label} width="100px" height="100px" layout="responsive" />
       <Text
         align="center"
         style={{

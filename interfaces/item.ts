@@ -1,6 +1,8 @@
 export interface IItem {
-  src: string;
+  id: number;
   label: string;
   description?: string;
-  tags: number[];
+  image: string;
+  tags?: number[];
+  createdAt?: Date;
 }
