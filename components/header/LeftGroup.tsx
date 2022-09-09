@@ -1,8 +1,12 @@
 import type { NextPage } from 'next';
-import { Group, Avatar, Select, ActionIcon } from '@mantine/core';
+import { Group, Avatar, TextInput, ActionIcon } from '@mantine/core';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 
-const LeftGroup: NextPage = () => {
+type Props = {
+  setQuery: (query: string) => void;
+};
+
+const LeftGroup: NextPage<Props> = (props: Props) => {
   return (
     <Group>
       <Avatar
@@ -12,18 +16,11 @@ const LeftGroup: NextPage = () => {
         component="a"
         href="https://www.dejv.it/"
       />
-      <Select
+      <TextInput
         placeholder="Search images..."
-        icon={<FaSearch />}
         variant="filled"
-        searchable
-        data={[
-          { value: '1', label: 'Option 1' },
-          { value: '2', label: 'Option 2' },
-          { value: '3', label: 'Option 3' },
-          { value: '4', label: 'Option 4' },
-          { value: '5', label: 'Option 5' },
-        ]}
+        icon={<FaSearch />}
+        onChange={(e) => props.setQuery(e.currentTarget.value)}
       />
       <ActionIcon variant="light" color="cyan" size="lg">
         <FaFilter size={16} />

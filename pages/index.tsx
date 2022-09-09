@@ -1,14 +1,22 @@
 import type { NextPage } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { useState } from 'react';
 import Header from '../components/header';
 import Grid from '../components/grid';
-import type { ITag, IGridProps } from '../interfaces';
+import type { IItem, ITag } from '../interfaces';
 
-const Home: NextPage<IGridProps> = (props: IGridProps) => {
+type Props = {
+  items: IItem[];
+  tags: ITag[];
+};
+
+const Home: NextPage<Props> = (props: Props) => {
+  const [query, setQuery] = useState('');
+
   return (
     <>
-      <Header />
-      <Grid {...props} />
+      <Header setQuery={setQuery} />
+      <Grid items={props.items} tags={props.tags} query={query} />
     </>
   );
 };

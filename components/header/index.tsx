@@ -3,7 +3,11 @@ import { useMantineTheme, Group } from '@mantine/core';
 import LeftGroup from './LeftGroup';
 import RightGroup from './RightGroup';
 
-const Header: NextPage = () => {
+type Props = {
+  setQuery: (query: string) => void;
+};
+
+const Header: NextPage<Props> = (props: Props) => {
   const theme = useMantineTheme();
 
   return (
@@ -14,7 +18,7 @@ const Header: NextPage = () => {
         padding: theme.spacing.md,
       }}
     >
-      <LeftGroup />
+      <LeftGroup {...props} />
       <RightGroup />
     </Group>
   );
