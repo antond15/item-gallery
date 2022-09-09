@@ -1,8 +1,31 @@
 import type { NextPage } from 'next';
 import { createContext, useEffect, useState } from 'react';
-import { useMantineTheme, Box, ScrollArea, SimpleGrid, Title } from '@mantine/core';
+import { createStyles, useMantineTheme, Box, ScrollArea, SimpleGrid, Title } from '@mantine/core';
 import ItemHover from './ItemHover';
 import type { ITag, IGridProps } from '../../interfaces';
+
+const useStyles = createStyles((theme) => ({
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    height: 'calc(100vh - 68px)', // TODO: change this to be more responsive
+  },
+  container: {
+    background: theme.colors.dark[8],
+    borderRadius: theme.radius.md,
+    padding: theme.spacing.xl,
+    marginTop: theme.spacing.xl,
+    marginBottom: theme.spacing.xl,
+  },
+  noResultWrapper: {
+    position: 'absolute',
+    width: '100%',
+  },
+  noResultTitle: {
+    userSelect: 'none',
+    opacity: 0.3,
+  },
+}));
 
 const breakPoints = [
   { maxWidth: 1400, cols: 11 },
@@ -19,7 +42,7 @@ const breakPoints = [
 export const TagsContext = createContext<ITag[]>([]);
 
 const Grid: NextPage<IGridProps> = (props: IGridProps) => {
-  const theme = useMantineTheme();
+  const { classes } = useStyles();
   const [items, setItems] = useState(props.items);
 
   useEffect(() => {
@@ -28,28 +51,9 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
   }, [props.query, props.items]);
 
   return (
-    <Box
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        height: 'calc(100vh - 68px)', // TODO: change this to be responsive
-      }}
-    >
-      <Box
-        style={{
-          background: theme.colors.dark[8],
-          borderRadius: theme.radius.md,
-          padding: theme.spacing.xl,
-          marginTop: theme.spacing.xl,
-          marginBottom: theme.spacing.xl,
-        }}
-      >
-        <ScrollArea
-          type="never"
-          style={{
-            height: 'calc(100vh - 164px)', // TODO: change this to be responsive
-          }}
-        >
+    <Box className={classes.wrapper}>
+      <Box className={classes.container}>
+        <ScrollArea type="never" style={{ height: 'calc(100vh - 164px)' }}>
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
             {(items.length > 0 && (
               <TagsContext.Provider value={props.tags}>
@@ -60,19 +64,8 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
             )) || (
               <>
                 <Box style={{ width: '100px' }} />
-                <Box
-                  style={{
-                    position: 'absolute',
-                    width: '100%',
-                  }}
-                >
-                  <Title
-                    align="center"
-                    style={{
-                      userSelect: 'none',
-                      opacity: 0.3,
-                    }}
-                  >
+                <Box className={classes.noResultWrapper}>
+                  <Title align="center" className={classes.noResultTitle}>
                     No results found&nbsp;🙁
                   </Title>
                 </Box>
