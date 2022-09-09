@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import { createContext } from 'react';
-import { useMantineTheme, Box, ScrollArea, SimpleGrid } from '@mantine/core';
+import { createContext, useEffect, useState } from 'react';
+import { useMantineTheme, Box, ScrollArea, SimpleGrid, Title } from '@mantine/core';
 import ItemHover from './ItemHover';
 import type { ITag, IGridProps } from '../../interfaces';
 
@@ -20,13 +20,19 @@ export const TagsContext = createContext<ITag[]>([]);
 
 const Grid: NextPage<IGridProps> = (props: IGridProps) => {
   const theme = useMantineTheme();
+  const [items, setItems] = useState(props.items);
+
+  useEffect(() => {
+    const result = props.items.filter((item) => item.label.toLowerCase().includes(props.query));
+    setItems(result);
+  }, [props.query, props.items]);
 
   return (
     <Box
       style={{
         display: 'flex',
         justifyContent: 'center',
-        height: 'calc(100vh - 68px)',
+        height: 'calc(100vh - 68px)', // TODO: change this to be responsive
       }}
     >
       <Box
@@ -41,15 +47,37 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
         <ScrollArea
           type="never"
           style={{
-            height: 'calc(100vh - 164px)', // TODO: change this
+            height: 'calc(100vh - 164px)', // TODO: change this to be responsive
           }}
         >
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
-            <TagsContext.Provider value={props.tags}>
-              {props.items.map((item, index) => (
-                <ItemHover key={index} {...item} />
-              ))}
-            </TagsContext.Provider>
+            {(items.length > 0 && (
+              <TagsContext.Provider value={props.tags}>
+                {items.map((item, index) => (
+                  <ItemHover key={index} {...item} />
+                ))}
+              </TagsContext.Provider>
+            )) || (
+              <>
+                <Box style={{ width: '100px' }} />
+                <Box
+                  style={{
+                    position: 'absolute',
+                    width: '100%',
+                  }}
+                >
+                  <Title
+                    align="center"
+                    style={{
+                      userSelect: 'none',
+                      opacity: 0.3,
+                    }}
+                  >
+                    No results found&nbsp;🙁
+                  </Title>
+                </Box>
+              </>
+            )}
           </SimpleGrid>
         </ScrollArea>
       </Box>

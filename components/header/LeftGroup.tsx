@@ -20,7 +20,7 @@ const LeftGroup: NextPage<Props> = (props: Props) => {
         placeholder="Search images..."
         variant="filled"
         icon={<FaSearch />}
-        onChange={(e) => props.setQuery(e.currentTarget.value)}
+        onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
       />
       <ActionIcon variant="light" color="cyan" size="lg">
         <FaFilter size={16} />
