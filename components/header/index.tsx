@@ -11,6 +11,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type Props = {
+  noSearch?: boolean;
   setQuery: (query: string) => void;
 };
 
