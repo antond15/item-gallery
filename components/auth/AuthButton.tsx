@@ -17,7 +17,14 @@ const AuthButton: NextPage = () => {
           </div>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item icon={<FaPlus />} component={NextLink} href='/create' style={{ lineHeight: 1.15 }}>Add new item</Menu.Item>
+          <Menu.Item
+            icon={<FaPlus />}
+            component={NextLink}
+            href="/create"
+            style={{ lineHeight: 1.15 }}
+          >
+            Add new item
+          </Menu.Item>
           <Menu.Item icon={<FaSignOutAlt />} color="red" onClick={() => signOut()}>
             Sign Out
           </Menu.Item>
