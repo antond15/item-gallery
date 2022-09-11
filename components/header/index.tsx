@@ -11,8 +11,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type Props = {
-  noSearch?: boolean;
-  setQuery: (query: string) => void;
+  setQuery?: (query: string) => void;
 };
 
 const Header: NextPage<Props> = (props: Props) => {

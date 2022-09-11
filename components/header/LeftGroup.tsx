@@ -3,8 +3,7 @@ import { Group, Avatar, TextInput, ActionIcon } from '@mantine/core';
 import { FaSearch, FaFilter } from 'react-icons/fa';
 
 type Props = {
-  noSearch?: boolean;
-  setQuery: (query: string) => void;
+  setQuery?: (query: string) => void;
 };
 
 const LeftGroup: NextPage<Props> = (props: Props) => {
@@ -17,13 +16,13 @@ const LeftGroup: NextPage<Props> = (props: Props) => {
         component="a"
         href="https://www.dejv.it/"
       />
-      {!props.noSearch && (
+      {props.setQuery && (
         <>
           <TextInput
             placeholder="Search images..."
             variant="filled"
             icon={<FaSearch />}
-            onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
+            onChange={(e) => props.setQuery?.(e.currentTarget.value.toLowerCase())}
           />
           <ActionIcon variant="light" color="cyan" size="lg">
             <FaFilter size={16} />
