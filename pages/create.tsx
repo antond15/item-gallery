@@ -1,22 +1,23 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
-import { Text } from '@mantine/core';
 import Header from '../components/header';
+import SubmitForm from '../components/submit';
 
 const Home: NextPage = () => {
   return (
     <>
       <Header />
-      <Text>Create new item page</Text>
+      <SubmitForm />
     </>
   );
 };
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
 
+  // Redirect back to homepage if not signed in
   if (!session) {
     return {
       redirect: {
