@@ -44,6 +44,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  itemRequests  ItemRequest[]
 }
 
 model VerificationToken {
@@ -66,4 +67,16 @@ model Tag {
   id    Int    @id @default(autoincrement())
   label String @unique
   color String
+}
+
+model ItemRequest {
+  id          Int      @id @default(autoincrement())
+  label       String
+  description String?  @db.Text
+  image       String   @db.Text
+  tags        Json?
+
+  userId      String
+  submitedBy  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  submitedAt  DateTime @default(now())
 }

@@ -1,6 +1,16 @@
 import type { NextPage } from 'next';
-import { createStyles, Stack, TextInput, Textarea, MultiSelect, Button } from '@mantine/core';
+import {
+  createStyles,
+  Stack,
+  TextInput,
+  Textarea,
+  MultiSelect,
+  Button,
+  Anchor,
+} from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { showNotification, updateNotification } from '@mantine/notifications';
+import { ISubmit } from '../../interfaces';
 
 const useStyles = createStyles((theme) => ({
   form: {
@@ -18,10 +28,62 @@ const useStyles = createStyles((theme) => ({
 }));
 
 // TODO: fetch from db
-const tags = ['Food', 'Drinks', 'Consumables', 'Furniture'];
+const tags = [
+  { label: 'Food', value: 1 },
+  { label: 'Drinks', value: 2 },
+  { label: 'Consumables', value: 3 },
+  { label: 'Furniture', value: 4 },
+];
 
 // TODO: move somewhere else
 const allowedHosts = ['i.imgur.com', 'raw.githubusercontent.com'];
+
+const submit = async (values: ISubmit, clearForm: () => void) => {
+  // Show the notificaton before the request to visualize the loading state
+  showNotification({
+    id: 'submit',
+    title: 'Submitting',
+    message: 'Your submission is being processed.',
+    loading: true,
+    autoClose: false,
+    disallowClose: true,
+  });
+
+  const response = await fetch('/api/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(values),
+  });
+
+  if (response.ok) {
+    // Update and clear the form inputs
+    updateNotification({
+      id: 'submit',
+      title: 'Successfully submitted',
+      message: 'Your item submission has been successfully sent to the review team.',
+      color: 'green',
+      autoClose: 10000,
+    });
+
+    clearForm();
+  } else {
+    updateNotification({
+      id: 'submit',
+      title: 'Something bad happened',
+      message: (
+        <>
+          Try again later or ask for help at our{' '}
+          <Anchor href="https://discord.gg/2ZezMw2xvR" target="_blank">
+            Discord
+          </Anchor>{' '}
+          server.
+        </>
+      ),
+      color: 'red',
+      autoClose: false,
+    });
+  }
+};
 
 const SubmitForm: NextPage = () => {
   const { classes } = useStyles();
@@ -43,6 +105,7 @@ const SubmitForm: NextPage = () => {
         if (!value) return 'Image is required';
 
         try {
+          // Regex would be more performant but in this case it's ok
           const hostname = new URL(value).hostname;
           if (!allowedHosts.includes(hostname)) return 'Image must be hosted on a valid host';
         } catch (error) {
@@ -53,7 +116,7 @@ const SubmitForm: NextPage = () => {
   });
 
   return (
-    <form className={classes.form} onSubmit={form.onSubmit(console.log)}>
+    <form className={classes.form} onSubmit={form.onSubmit((values) => submit(values, form.reset))}>
       <Stack spacing="xs">
         <TextInput
           label="Label"
