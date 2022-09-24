@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { showNotification, updateNotification } from '@mantine/notifications';
-import { ISubmit } from '../../interfaces';
+import type { ISubmit } from '../../interfaces';
 
 const useStyles = createStyles((theme) => ({
   form: {
@@ -20,6 +20,11 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     margin: 'auto',
     marginTop: theme.spacing.xl,
+
+    '@media (max-width: 450px)': {
+      borderRadius: 0,
+      marginTop: theme.spacing.xs,
+    },
   },
   buttonWrapper: {
     textAlign: 'right',

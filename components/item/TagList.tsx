@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { useState, useContext } from 'react';
 import { Popover, Button, Stack, Badge } from '@mantine/core';
-import { TagsContext } from './';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { TagsContext } from '../grid/index';
 
 type Props = {
   tags?: number[];

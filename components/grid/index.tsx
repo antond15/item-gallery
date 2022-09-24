@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { createContext, useEffect, useState } from 'react';
-import { createStyles, useMantineTheme, Box, ScrollArea, SimpleGrid, Title } from '@mantine/core';
-import ItemHover from './ItemHover';
+import { createStyles, ScrollArea, SimpleGrid, Title } from '@mantine/core';
 import type { ITag, IGridProps } from '../../interfaces';
+import Item from '../item';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -16,6 +16,27 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     marginTop: theme.spacing.xl,
     marginBottom: theme.spacing.xl,
+
+    '@media (max-width: 390px)': {
+      padding: theme.spacing.xs,
+    },
+
+    '@media (max-width: 340px)': {
+      borderRadius: 0,
+      marginTop: theme.spacing.xs,
+      marginBottom: 0,
+    },
+  },
+  scrollArea: {
+    height: 'calc(100vh - 164px)',
+
+    '@media (max-width: 390px)': {
+      height: 'calc(100vh - 136px)',
+    },
+
+    '@media (max-width: 340px)': {
+      height: 'calc(100vh - 98px)',
+    },
   },
   noResultWrapper: {
     position: 'absolute',
@@ -45,36 +66,37 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
   const { classes } = useStyles();
   const [items, setItems] = useState(props.items);
 
+  // Search and filter items
   useEffect(() => {
     const result = props.items.filter((item) => item.label.toLowerCase().includes(props.query));
     setItems(result);
   }, [props.query, props.items]);
 
   return (
-    <Box className={classes.wrapper}>
-      <Box className={classes.container}>
-        <ScrollArea type="never" style={{ height: 'calc(100vh - 164px)' }}>
+    <div className={classes.wrapper}>
+      <div className={classes.container}>
+        <ScrollArea type="never" className={classes.scrollArea}>
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
             {(items.length > 0 && (
               <TagsContext.Provider value={props.tags}>
                 {items.map((item, index) => (
-                  <ItemHover key={index} {...item} />
+                  <Item key={index} {...item} />
                 ))}
               </TagsContext.Provider>
             )) || (
               <>
-                <Box style={{ width: '100px' }} />
-                <Box className={classes.noResultWrapper}>
+                <div style={{ width: '100px' }} />
+                <div className={classes.noResultWrapper}>
                   <Title align="center" className={classes.noResultTitle}>
                     No results found&nbsp;🙁
                   </Title>
-                </Box>
+                </div>
               </>
             )}
           </SimpleGrid>
         </ScrollArea>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { createStyles, Stack, Text, Group } from '@mantine/core';
 import TagList from './TagList';
-import { IItem } from '../../interfaces/item';
+import type { IItem } from '../../interfaces/item';
 
 const useStyles = createStyles(() => ({
   noSelect: {
