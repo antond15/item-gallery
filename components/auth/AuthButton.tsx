@@ -20,7 +20,7 @@ const AuthButton: NextPage = () => {
           <Menu.Item
             icon={<FaPlus />}
             component={NextLink}
-            href="/create"
+            href="/submit"
             style={{ lineHeight: 1.15 }}
           >
             Add new item
