@@ -1,8 +1,10 @@
 import { showNotification, updateNotification } from '@mantine/notifications';
 
 export const accept = async (body: any, removeRequest: (id: number) => void) => {
+  const notificationId = `request-accept-${body.id}`;
+
   showNotification({
-    id: 'request-accept',
+    id: notificationId,
     title: 'Saving',
     message: 'Recording changes to database.',
     loading: true,
@@ -26,7 +28,7 @@ export const accept = async (body: any, removeRequest: (id: number) => void) => 
     removeRequest(body.id);
 
     updateNotification({
-      id: 'request-accept',
+      id: notificationId,
       title: 'Successfully saved',
       message: `Request #${body.id} has been successfully saved to database.`,
       color: 'green',
@@ -34,7 +36,7 @@ export const accept = async (body: any, removeRequest: (id: number) => void) => 
     });
   } else {
     updateNotification({
-      id: 'request-accept',
+      id: notificationId,
       title: 'Something bad happened',
       message: 'Try again later. No changes were made.',
       color: 'red',

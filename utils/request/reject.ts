@@ -1,8 +1,10 @@
 import { showNotification, updateNotification } from '@mantine/notifications';
 
 export const reject = async (id: number, removeRequest: (id: number) => void) => {
+  const notificationId = `request-reject-${id}`;
+
   showNotification({
-    id: 'request-reject',
+    id: notificationId,
     title: 'Rejecting',
     message: 'Recording changes to database.',
     loading: true,
@@ -20,7 +22,7 @@ export const reject = async (id: number, removeRequest: (id: number) => void) =>
     removeRequest(id);
 
     updateNotification({
-      id: 'request-reject',
+      id: notificationId,
       title: 'Rejected',
       message: `Request #${id} has been successfully rejected.`,
       color: 'green',
@@ -28,7 +30,7 @@ export const reject = async (id: number, removeRequest: (id: number) => void) =>
     });
   } else {
     updateNotification({
-      id: 'request-reject',
+      id: notificationId,
       title: 'Something bad happened',
       message: 'Try again later. No changes were made.',
       color: 'red',
