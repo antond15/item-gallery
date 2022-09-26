@@ -30,7 +30,7 @@ const Header: NextPage<Props> = (props: Props) => {
           component="a"
           href="https://www.dejv.it/"
         />
-        {props.setQuery && <Search {...props} />}
+        {props.setQuery && <Search query={props.query} setQuery={props.setQuery} />}
       </Group>
       <AuthButton />
     </Group>

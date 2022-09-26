@@ -9,7 +9,7 @@ const useStyles = createStyles({
     },
   },
   searchIcon: {
-    '@media (min-width: 500px)': {
+    '@media (min-width: 501px)': {
       display: 'none',
     },
   },
@@ -32,10 +32,9 @@ const Search: NextPage<Props> = (props: Props) => {
           </ActionIcon>
         </Popover.Target>
 
-        <Popover.Dropdown>
+        <Popover.Dropdown sx={{ padding: 0 }}>
           <TextInput
             placeholder="Search images..."
-            variant="filled"
             defaultValue={props.query}
             onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
           />
