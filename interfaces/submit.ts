@@ -1,6 +1,6 @@
 export interface ISubmit {
-	label: string;
-	description?: string;
-	image: string;
-	tags?: number[];
+  label: string;
+  description?: string;
+  image: string;
+  tags?: number[];
 }
