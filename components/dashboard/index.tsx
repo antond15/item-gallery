@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { createStyles, Accordion, Group, Badge } from '@mantine/core';
+import { createStyles, Accordion, Group, Badge, Title } from '@mantine/core';
 import { IRequest } from '../../interfaces';
 import Form from './form';
 
@@ -13,6 +13,10 @@ const useStyles = createStyles((theme) => ({
     margin: 'auto',
     marginTop: theme.spacing.xl,
   },
+  noRequests: {
+    userSelect: 'none',
+    opacity: 0.3,
+  }
 }));
 
 type Props = {
@@ -29,22 +33,28 @@ const Dashboard: NextPage<Props> = (props) => {
 
   return (
     <div className={classes.container}>
-      <Accordion>
-        {requests.map((request, index) => (
-          <Accordion.Item key={index} value={request.id.toString()}>
-            <Accordion.Control>
-              <Group>
-                <Badge color="cyan">{request.id}</Badge>
-                {request.label}
-              </Group>
-            </Accordion.Control>
+      {requests.length > 0 && (
+        <Accordion>
+          {requests.map((request, index) => (
+            <Accordion.Item key={index} value={request.id.toString()}>
+              <Accordion.Control>
+                <Group>
+                  <Badge color="cyan">{request.id}</Badge>
+                  {request.label}
+                </Group>
+              </Accordion.Control>
 
-            <Accordion.Panel>
-              <Form {...request} removeRequest={removeRequest} />
-            </Accordion.Panel>
-          </Accordion.Item>
-        ))}
-      </Accordion>
+              <Accordion.Panel>
+                <Form {...request} removeRequest={removeRequest} />
+              </Accordion.Panel>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+      ) || (
+        <Title align="center" className={classes.noRequests}>
+          No available requests
+        </Title>
+      )}
     </div>
   );
 };
