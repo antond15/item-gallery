@@ -108,7 +108,14 @@ const Form: NextPage<IRequest> = (props) => {
             <ActionIcon color="green" variant="light">
               <FaCheck />
             </ActionIcon>
-            <ActionIcon color="red" variant="light">
+            <ActionIcon color="red" variant="light" onClick={() => {
+                fetch('/api/request/reject', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ id: props.id }),
+                });
+              }
+            }>
               <FaTimes />
             </ActionIcon>
           </Group>
