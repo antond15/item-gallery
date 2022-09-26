@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { PrismaClient } from '@prisma/client';
 import { getToken } from 'next-auth/jwt';
 import { IRequest } from '../interfaces';
@@ -12,6 +13,10 @@ type Props = {
 const Home: NextPage<Props> = (props) => {
   return (
     <>
+      <Head>
+        <title>Item Gallery | Dashboard</title>
+      </Head>
+
       <Header />
       <Dashboard {...props} />
     </>

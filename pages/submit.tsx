@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { getToken } from 'next-auth/jwt';
 import Header from '../components/header';
 import SubmitForm from '../components/submit';
@@ -6,6 +7,10 @@ import SubmitForm from '../components/submit';
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Item Gallery | Submit</title>
+      </Head>
+
       <Header />
       <SubmitForm />
     </>
