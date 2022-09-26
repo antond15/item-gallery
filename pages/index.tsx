@@ -15,7 +15,7 @@ const Home: NextPage<Props> = (props: Props) => {
 
   return (
     <>
-      <Header setQuery={setQuery} />
+      <Header query={query} setQuery={setQuery} />
       <Grid items={props.items} tags={props.tags} query={query} />
     </>
   );

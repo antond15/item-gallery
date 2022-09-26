@@ -16,6 +16,7 @@ const useStyles = createStyles({
 });
 
 type Props = {
+  query?: string;
   setQuery: (query: string) => void;
 };
 
@@ -30,10 +31,12 @@ const Search: NextPage<Props> = (props: Props) => {
             <FaSearch size={16} />
           </ActionIcon>
         </Popover.Target>
+
         <Popover.Dropdown>
           <TextInput
             placeholder="Search images..."
             variant="filled"
+            defaultValue={props.query}
             onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
           />
         </Popover.Dropdown>

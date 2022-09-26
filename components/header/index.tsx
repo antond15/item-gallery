@@ -13,6 +13,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type Props = {
+  query?: string;
   setQuery?: (query: string) => void;
 };
 
@@ -29,7 +30,7 @@ const Header: NextPage<Props> = (props: Props) => {
           component="a"
           href="https://www.dejv.it/"
         />
-        {props.setQuery && <Search setQuery={props.setQuery} />}
+        {props.setQuery && <Search {...props} />}
       </Group>
       <AuthButton />
     </Group>
