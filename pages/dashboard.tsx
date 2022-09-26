@@ -1,6 +1,6 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import { PrismaClient } from '@prisma/client';
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import { IRequest } from '../interfaces';
 import Header from '../components/header';
 import Dashboard from '../components/dashboard';
@@ -21,10 +21,10 @@ const Home: NextPage<Props> = (props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
+  const token = await getToken(context);
 
   // Redirect back to homepage if not authorized
-  if (!session?.user || !process.env.ADMINS?.includes(session.user.email as string)) {
+  if (!token?.sub || !process.env.ADMINS?.includes(token.sub)) {
     return {
       redirect: {
         destination: '/',
