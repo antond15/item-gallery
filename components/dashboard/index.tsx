@@ -6,7 +6,7 @@ import Form from './form';
 
 const useStyles = createStyles((theme) => ({
   scrollArea: {
-    height: 'calc(100vh - 164px)',
+    height: 'calc(100vh - 156px)',
   },
   container: {
     background: theme.colors.dark[8],

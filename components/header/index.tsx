@@ -1,12 +1,14 @@
 import type { NextPage } from 'next';
-import { createStyles, Group, Avatar, TextInput, ActionIcon } from '@mantine/core';
-import { FaSearch, FaFilter } from 'react-icons/fa';
+import { createStyles, Group, Avatar } from '@mantine/core';
 import AuthButton from '../auth/AuthButton';
+import Search from './search';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
     backgroundColor: theme.colors.dark[8],
-    padding: theme.spacing.md,
+    paddingLeft: theme.spacing.sm,
+    paddingRight: theme.spacing.sm,
+    height: 60,
   },
 }));
 
@@ -27,19 +29,7 @@ const Header: NextPage<Props> = (props: Props) => {
           component="a"
           href="https://www.dejv.it/"
         />
-        {props.setQuery && (
-          <>
-            <TextInput
-              placeholder="Search images..."
-              variant="filled"
-              icon={<FaSearch />}
-              onChange={(e) => props.setQuery?.(e.currentTarget.value.toLowerCase())}
-            />
-            <ActionIcon variant="light" color="cyan" size="lg">
-              <FaFilter size={16} />
-            </ActionIcon>
-          </>
-        )}
+        {props.setQuery && <Search setQuery={props.setQuery} />}
       </Group>
       <AuthButton />
     </Group>

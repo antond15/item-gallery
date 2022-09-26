@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
   wrapper: {
     display: 'flex',
     justifyContent: 'center',
-    height: 'calc(100vh - 68px)', // TODO: change this to be more responsive
+    height: 'calc(100vh - 60px)', // TODO: change this to be more responsive
   },
   container: {
     background: theme.colors.dark[8],
@@ -21,22 +21,14 @@ const useStyles = createStyles((theme) => ({
       padding: theme.spacing.xs,
     },
 
-    '@media (max-width: 340px)': {
+    '@media (max-width: 350px)': {
       borderRadius: 0,
       marginTop: theme.spacing.xs,
       marginBottom: 0,
     },
   },
   scrollArea: {
-    height: 'calc(100vh - 164px)',
-
-    '@media (max-width: 390px)': {
-      height: 'calc(100vh - 136px)',
-    },
-
-    '@media (max-width: 340px)': {
-      height: 'calc(100vh - 98px)',
-    },
+    height: 'calc(100vh - 156px)',
   },
   noResultWrapper: {
     position: 'absolute',

@@ -3,7 +3,7 @@ import { createStyles, Group, Avatar, Text } from '@mantine/core';
 
 const useStyles = createStyles({
   details: {
-    '@media (max-width: 340px)': {
+    '@media (max-width: 350px)': {
       display: 'none',
     },
   },
