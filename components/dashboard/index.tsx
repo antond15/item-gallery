@@ -12,11 +12,21 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.xl,
     margin: 'auto',
     marginTop: theme.spacing.xl,
+
+    '@media (max-width: 950px)': {
+      margin: theme.spacing.xl,
+    },
+
+    '@media (max-width: 450px)': {
+      borderRadius: 0,
+      margin: 0,
+      marginTop: theme.spacing.xs,
+    },
   },
   noRequests: {
     userSelect: 'none',
     opacity: 0.3,
-  }
+  },
 }));
 
 type Props = {
@@ -33,7 +43,7 @@ const Dashboard: NextPage<Props> = (props) => {
 
   return (
     <div className={classes.container}>
-      {requests.length > 0 && (
+      {(requests.length > 0 && (
         <Accordion>
           {requests.map((request, index) => (
             <Accordion.Item key={index} value={request.id.toString()}>
@@ -50,7 +60,7 @@ const Dashboard: NextPage<Props> = (props) => {
             </Accordion.Item>
           ))}
         </Accordion>
-      ) || (
+      )) || (
         <Title align="center" className={classes.noRequests}>
           No available requests
         </Title>
