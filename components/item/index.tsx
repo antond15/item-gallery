@@ -26,7 +26,7 @@ const Item: NextPage<IItem> = (props: IItem) => {
   const { classes } = useStyles();
 
   return (
-    <HoverCard withArrow width="320px">
+    <HoverCard withArrow openDelay={250} width="320px">
       <HoverCard.Target>
         <Box className={classes.wrapper}>
           <Image
