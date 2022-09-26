@@ -1,10 +1,13 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { createStyles, Accordion, Group, Badge, Title } from '@mantine/core';
+import { createStyles, ScrollArea, Accordion, Group, Badge, Title } from '@mantine/core';
 import { IRequest } from '../../interfaces';
 import Form from './form';
 
 const useStyles = createStyles((theme) => ({
+  scrollArea: {
+    height: 'calc(100vh - 164px)',
+  },
   container: {
     background: theme.colors.dark[8],
     borderRadius: theme.radius.md,
@@ -44,22 +47,24 @@ const Dashboard: NextPage<Props> = (props) => {
   return (
     <div className={classes.container}>
       {(requests.length > 0 && (
-        <Accordion>
-          {requests.map((request, index) => (
-            <Accordion.Item key={index} value={request.id.toString()}>
-              <Accordion.Control>
-                <Group>
-                  <Badge color="cyan">{request.id}</Badge>
-                  {request.label}
-                </Group>
-              </Accordion.Control>
+        <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.scrollArea}>
+          <Accordion>
+            {requests.map((request, index) => (
+              <Accordion.Item key={index} value={request.id.toString()}>
+                <Accordion.Control>
+                  <Group>
+                    <Badge color="cyan">{request.id}</Badge>
+                    {request.label}
+                  </Group>
+                </Accordion.Control>
 
-              <Accordion.Panel>
-                <Form {...request} removeRequest={removeRequest} />
-              </Accordion.Panel>
-            </Accordion.Item>
-          ))}
-        </Accordion>
+                <Accordion.Panel>
+                  <Form {...request} removeRequest={removeRequest} />
+                </Accordion.Panel>
+              </Accordion.Item>
+            ))}
+          </Accordion>
+        </ScrollArea>
       )) || (
         <Title align="center" className={classes.noRequests}>
           No available requests
