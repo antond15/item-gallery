@@ -75,7 +75,7 @@ const Grid: NextPage<IGridProps> = (props: IGridProps) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.container}>
-        <ScrollArea type="never" className={classes.scrollArea}>
+        <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.scrollArea}>
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
             {(items.length > 0 && (
               <TagsContext.Provider value={props.tags}>
