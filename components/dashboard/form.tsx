@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
 import {
   createStyles,
   Stack,
@@ -10,9 +11,8 @@ import {
   ActionIcon,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { IRequest } from '../../interfaces';
-import { useState } from 'react';
 import { FaCheck, FaTimes } from 'react-icons/fa';
+import { IRequest } from '../../interfaces';
 
 const useStyles = createStyles((theme) => ({
   form: {
@@ -109,10 +109,31 @@ const Form: NextPage<Props> = (props) => {
 
         <Group position="apart">
           <Group spacing="xs">
-            <ActionIcon color="green" variant="light">
+            <ActionIcon
+              color="green"
+              variant="light"
+              onClick={() => {
+                fetch('/api/request/accept', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    id: props.id,
+                    label: values.label,
+                    description: values.description,
+                    image: values.image,
+                    tags: values.tags,
+                  }),
+                });
+
+                props.removeRequest(props.id);
+              }}
+            >
               <FaCheck />
             </ActionIcon>
-            <ActionIcon color="red" variant="light" onClick={() => {
+            <ActionIcon
+              color="red"
+              variant="light"
+              onClick={() => {
                 fetch('/api/request/reject', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
@@ -120,8 +141,8 @@ const Form: NextPage<Props> = (props) => {
                 });
 
                 props.removeRequest(props.id);
-              }
-            }>
+              }}
+            >
               <FaTimes />
             </ActionIcon>
           </Group>

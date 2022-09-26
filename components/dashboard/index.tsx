@@ -25,7 +25,7 @@ const Dashboard: NextPage<Props> = (props) => {
 
   const removeRequest = (id: number) => {
     setRequests(requests.filter((request) => request.id !== id));
-  }
+  };
 
   return (
     <div className={classes.container}>

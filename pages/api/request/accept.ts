@@ -10,7 +10,7 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const data = req.body;
-  if (!data || typeof data !== 'object' || !data.id) {
+  if (!data || typeof data !== 'object' || !data.id || !data.label || !data.image) {
     return res.status(400).json({ message: 'Bad request' });
   }
 
@@ -19,17 +19,27 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  const removed = await prisma.itemRequest.delete({
-    where: {
-      id: data.id,
-    },
-  });
-
-  if (removed) {
-    return res.status(200).json({ message: 'OK' });
-  } else {
+  try {
+    await prisma.$transaction([
+      prisma.item.create({
+        data: {
+          label: data.label,
+          description: data.description,
+          image: data.image,
+          tags: data.tags,
+        },
+      }),
+      prisma.itemRequest.delete({
+        where: {
+          id: data.id,
+        },
+      }),
+    ]);
+  } catch (e) {
     return res.status(500).json({ message: 'Internal server error' });
   }
+
+  return res.status(200).json({ message: 'OK' });
 };
 
 export default Handler;
