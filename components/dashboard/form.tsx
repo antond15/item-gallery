@@ -13,6 +13,7 @@ import {
 import { useForm } from '@mantine/form';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { IRequest } from '../../interfaces';
+import { images } from '../../next.config';
 
 const useStyles = createStyles((theme) => ({
   form: {
@@ -29,9 +30,6 @@ const tags = [
   { label: 'Consumables', value: 3 },
   { label: 'Furniture', value: 4 },
 ];
-
-// TODO: move somewhere else
-const allowedHosts = ['i.imgur.com', 'raw.githubusercontent.com'];
 
 type Props = {
   removeRequest: (id: number) => void;
@@ -63,7 +61,7 @@ const Form: NextPage<Props> = (props) => {
         try {
           // Regex would be more performant but in this case it's ok
           const hostname = new URL(value).hostname;
-          if (!allowedHosts.includes(hostname)) return 'Image must be hosted on a valid host';
+          if (!images?.domains?.includes(hostname)) return 'Image must be hosted on a valid host';
         } catch (error) {
           return 'Image must be a valid URL';
         }

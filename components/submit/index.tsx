@@ -11,6 +11,7 @@ import {
 import { useForm } from '@mantine/form';
 import { showNotification, updateNotification } from '@mantine/notifications';
 import type { ISubmit } from '../../interfaces';
+import { images } from '../../next.config';
 
 const useStyles = createStyles((theme) => ({
   form: {
@@ -39,9 +40,6 @@ const tags = [
   { label: 'Consumables', value: 3 },
   { label: 'Furniture', value: 4 },
 ];
-
-// TODO: move somewhere else
-const allowedHosts = ['i.imgur.com', 'raw.githubusercontent.com'];
 
 const submit = async (values: ISubmit, clearForm: () => void) => {
   // Show the notificaton before the request to visualize the loading state
@@ -112,7 +110,7 @@ const SubmitForm: NextPage = () => {
         try {
           // Regex would be more performant but in this case it's ok
           const hostname = new URL(value).hostname;
-          if (!allowedHosts.includes(hostname)) return 'Image must be hosted on a valid host';
+          if (!images?.domains?.includes(hostname)) return 'Image must be hosted on a valid host';
         } catch (error) {
           return 'Image must be a valid URL';
         }
