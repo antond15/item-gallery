@@ -11,6 +11,7 @@ import {
   ActionIcon,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { accept, reject } from '../../utils/request';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { IRequest } from '../../interfaces';
 import { images } from '../../next.config';
@@ -111,19 +112,16 @@ const Form: NextPage<Props> = (props) => {
               color="green"
               variant="light"
               onClick={() => {
-                fetch('/api/request/accept', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
+                accept(
+                  {
                     id: props.id,
                     label: values.label,
                     description: values.description,
                     image: values.image,
                     tags: values.tags,
-                  }),
-                });
-
-                props.removeRequest(props.id);
+                  },
+                  props.removeRequest
+                );
               }}
             >
               <FaCheck />
@@ -132,13 +130,7 @@ const Form: NextPage<Props> = (props) => {
               color="red"
               variant="light"
               onClick={() => {
-                fetch('/api/request/reject', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ id: props.id }),
-                });
-
-                props.removeRequest(props.id);
+                reject(props.id, props.removeRequest);
               }}
             >
               <FaTimes />
