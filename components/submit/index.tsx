@@ -1,16 +1,7 @@
 import type { NextPage } from 'next';
-import {
-  createStyles,
-  Stack,
-  TextInput,
-  Textarea,
-  MultiSelect,
-  Button,
-  Anchor,
-} from '@mantine/core';
+import { createStyles, Stack, TextInput, Textarea, MultiSelect, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { showNotification, updateNotification } from '@mantine/notifications';
-import type { ISubmit } from '../../interfaces';
+import { submit } from '../../utils/submitHandler';
 import { images } from '../../next.config';
 
 const useStyles = createStyles((theme) => ({
@@ -40,53 +31,6 @@ const tags = [
   { label: 'Consumables', value: 3 },
   { label: 'Furniture', value: 4 },
 ];
-
-const submit = async (values: ISubmit, clearForm: () => void) => {
-  // Show the notificaton before the request to visualize the loading state
-  showNotification({
-    id: 'submit',
-    title: 'Submitting',
-    message: 'Your submission is being processed.',
-    loading: true,
-    autoClose: false,
-    disallowClose: true,
-  });
-
-  const response = await fetch('/api/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(values),
-  });
-
-  if (response.ok) {
-    // Update and clear the form inputs
-    updateNotification({
-      id: 'submit',
-      title: 'Successfully submitted',
-      message: 'Your item submission has been successfully sent to the review team.',
-      color: 'green',
-      autoClose: 10000,
-    });
-
-    clearForm();
-  } else {
-    updateNotification({
-      id: 'submit',
-      title: 'Something bad happened',
-      message: (
-        <>
-          Try again later or ask for help at our{' '}
-          <Anchor href="https://discord.gg/2ZezMw2xvR" target="_blank">
-            Discord
-          </Anchor>{' '}
-          server.
-        </>
-      ),
-      color: 'red',
-      autoClose: false,
-    });
-  }
-};
 
 const SubmitForm: NextPage = () => {
   const { classes } = useStyles();
