@@ -4,5 +4,8 @@ module.exports = {
   swcMinify: true,
   images: {
     domains: ['raw.githubusercontent.com', 'i.imgur.com'],
+  },
+  eslint: {
+    dirs: ['components', 'interfaces', 'pages', 'theme', 'utils'],
   }
 }

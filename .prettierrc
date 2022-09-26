@@ -5,14 +5,5 @@
   "tabWidth": 2,
   "semi": true,
   "bracketSpacing": true,
-  "trailingComma": "es5",
-  "overrides": [
-    {
-      "files": ["*.css", "*.scss"],
-      "options": {
-        "useTabs": true,
-        "tabWidth": 4
-      }
-    }
-  ]
+  "trailingComma": "es5"
 }
