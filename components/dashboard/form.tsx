@@ -33,7 +33,11 @@ const tags = [
 // TODO: move somewhere else
 const allowedHosts = ['i.imgur.com', 'raw.githubusercontent.com'];
 
-const Form: NextPage<IRequest> = (props) => {
+type Props = {
+  removeRequest: (id: number) => void;
+} & IRequest;
+
+const Form: NextPage<Props> = (props) => {
   const { classes } = useStyles();
 
   const initialValues = {
@@ -114,6 +118,8 @@ const Form: NextPage<IRequest> = (props) => {
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ id: props.id }),
                 });
+
+                props.removeRequest(props.id);
               }
             }>
               <FaTimes />

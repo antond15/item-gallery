@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
 import { createStyles, Accordion, Group, Badge } from '@mantine/core';
 import { IRequest } from '../../interfaces';
 import Form from './form';
@@ -20,11 +21,16 @@ type Props = {
 
 const Dashboard: NextPage<Props> = (props) => {
   const { classes } = useStyles();
+  const [requests, setRequests] = useState(props.requests);
+
+  const removeRequest = (id: number) => {
+    setRequests(requests.filter((request) => request.id !== id));
+  }
 
   return (
     <div className={classes.container}>
       <Accordion>
-        {props.requests.map((request, index) => (
+        {requests.map((request, index) => (
           <Accordion.Item key={index} value={request.id.toString()}>
             <Accordion.Control>
               <Group>
@@ -34,7 +40,7 @@ const Dashboard: NextPage<Props> = (props) => {
             </Accordion.Control>
 
             <Accordion.Panel>
-              <Form {...request} />
+              <Form {...request} removeRequest={removeRequest} />
             </Accordion.Panel>
           </Accordion.Item>
         ))}
