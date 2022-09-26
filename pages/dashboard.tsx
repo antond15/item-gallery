@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // Redirect back to homepage if not authorized
   const admins = process.env.ADMINS?.split(', ');
-  if (!token?.sub || !admins?.includes(token.sub)) {
+  if (!token?.email || !admins?.includes(token.email)) {
     return {
       redirect: {
         destination: '/',
