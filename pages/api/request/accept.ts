@@ -15,7 +15,8 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const token = await getToken({ req });
-  if (!token?.sub || !process.env.ADMINS?.includes(token.sub)) {
+  const admins = process.env.ADMINS?.split(', ');
+  if (!token?.sub || !admins?.includes(token.sub)) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
