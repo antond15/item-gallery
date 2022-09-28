@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useState } from 'react';
 import { createStyles, ScrollArea, Accordion, Group, Badge, Title } from '@mantine/core';
 import { IRequest } from '../../interfaces';
-import Form from './form';
+import Form from './Form';
 
 const useStyles = createStyles((theme) => ({
   scrollArea: {
