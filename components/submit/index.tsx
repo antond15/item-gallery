@@ -9,6 +9,7 @@ import {
   Button,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import ImageHint from './ImageHint';
 import { submit } from '../../utils/submitHandler';
 import { images } from '../../next.config';
 
@@ -82,6 +83,7 @@ const SubmitForm: NextPage = () => {
         <TextInput
           label="Name"
           placeholder="bandage"
+          description="Name of the item used in-game"
           withAsterisk
           maxLength={25}
           {...form.getInputProps('name')}
@@ -89,6 +91,7 @@ const SubmitForm: NextPage = () => {
         <TextInput
           label="Label"
           placeholder="Bandage"
+          description="Label visible to players in the inventory"
           withAsterisk
           maxLength={50}
           {...form.getInputProps('label')}
@@ -96,6 +99,7 @@ const SubmitForm: NextPage = () => {
         <Textarea
           label="Description"
           placeholder="Bandage is a piece of cloth used to bind or stitch wounds or injuries."
+          description="Brief and general description of the item"
           maxLength={500}
           autosize
           minRows={2}
@@ -105,12 +109,14 @@ const SubmitForm: NextPage = () => {
         <TextInput
           label="Image URL"
           placeholder="https://i.imgur.com/QjH6wOP.png"
+          description={<ImageHint />}
           withAsterisk
           {...form.getInputProps('image')}
         />
         <MultiSelect
           label="Tags"
           placeholder="Select tags that suits this item"
+          description="Used to categorize items only in this gallery"
           data={tags}
           searchable
           nothingFound="Nothing found"
@@ -118,7 +124,13 @@ const SubmitForm: NextPage = () => {
           clearButtonLabel="Clear selection"
           {...form.getInputProps('tags')}
         />
-        <NumberInput label="Weight" placeholder="50" min={0} {...form.getInputProps('weight')} />
+        <NumberInput
+          label="Weight"
+          placeholder="50"
+          description="Possible weight of one piece of the item (in grams)"
+          min={0}
+          {...form.getInputProps('weight')}
+        />
 
         <div className={classes.buttonWrapper}>
           <Button type="submit" variant="light" color="cyan" size="xs">
