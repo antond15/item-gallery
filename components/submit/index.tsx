@@ -1,5 +1,13 @@
 import type { NextPage } from 'next';
-import { createStyles, Stack, TextInput, Textarea, MultiSelect, Button } from '@mantine/core';
+import {
+  createStyles,
+  Stack,
+  TextInput,
+  Textarea,
+  MultiSelect,
+  NumberInput,
+  Button,
+} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { submit } from '../../utils/submitHandler';
 import { images } from '../../next.config';
@@ -37,13 +45,19 @@ const SubmitForm: NextPage = () => {
 
   const form = useForm({
     initialValues: {
+      name: '',
       label: '',
       description: '',
       image: '',
       tags: [],
+      weight: Number,
     },
     // Validate basic stuff like 'required' or 'min length' this way because of the UI
     validate: {
+      name: (value) => {
+        if (!value) return 'Name is required';
+        if (value.length < 2) return 'Name must be at least 2 characters long';
+      },
       label: (value) => {
         if (!value) return 'Label is required';
         if (value.length < 2) return 'Label must be at least 2 characters long';
@@ -65,6 +79,13 @@ const SubmitForm: NextPage = () => {
   return (
     <form className={classes.form} onSubmit={form.onSubmit((values) => submit(values, form.reset))}>
       <Stack spacing="xs">
+        <TextInput
+          label="Name"
+          placeholder="bandage"
+          withAsterisk
+          maxLength={25}
+          {...form.getInputProps('name')}
+        />
         <TextInput
           label="Label"
           placeholder="Bandage"
@@ -97,6 +118,7 @@ const SubmitForm: NextPage = () => {
           clearButtonLabel="Clear selection"
           {...form.getInputProps('tags')}
         />
+        <NumberInput label="Weight" placeholder="50" min={0} {...form.getInputProps('weight')} />
 
         <div className={classes.buttonWrapper}>
           <Button type="submit" variant="light" color="cyan" size="xs">

@@ -15,13 +15,7 @@ export const accept = async (body: any, removeRequest: (id: number) => void) => 
   const response = await fetch('/api/request/accept', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      id: body.id,
-      label: body.label,
-      description: body.description,
-      image: body.image,
-      tags: body.tags,
-    }),
+    body: JSON.stringify(body),
   });
 
   if (response.ok) {

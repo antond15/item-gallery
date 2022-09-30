@@ -47,10 +47,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   rawRequests.forEach((request, index) => {
     requests[index] = {
       id: request.id,
+      name: request.name,
       label: request.label,
       description: request.description!,
       image: request.image,
       tags: request.tags as number[],
+      weight: request.weight!,
       userId: request.userId,
       submitedAt: request.submitedAt.toISOString(),
     };

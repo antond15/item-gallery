@@ -57,10 +57,12 @@ model VerificationToken {
 
 model Item {
   id          Int      @id @default(autoincrement())
+  name        String
   label       String
   description String?  @db.Text
   image       String   @db.Text
   tags        Json?
+  weight      Int?
 }
 
 model Tag {
@@ -71,10 +73,12 @@ model Tag {
 
 model ItemRequest {
   id          Int      @id @default(autoincrement())
+  name        String
   label       String
   description String?  @db.Text
   image       String   @db.Text
   tags        Json?
+  weight      Int?
 
   userId      String
   submitedBy  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
