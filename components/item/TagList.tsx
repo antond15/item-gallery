@@ -8,7 +8,7 @@ type Props = {
   tags?: number[];
 };
 
-const TagList: NextPage<Props> = (props: Props) => {
+const TagList: NextPage<Props> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const tagData = useContext(TagsContext);

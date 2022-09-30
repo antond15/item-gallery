@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Item: NextPage<IItem> = (props: IItem) => {
+const Item: NextPage<IItem> = (props) => {
   const { classes } = useStyles();
 
   return (

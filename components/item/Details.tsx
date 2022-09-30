@@ -12,7 +12,7 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-const Details: NextPage<IItem> = (props: IItem) => {
+const Details: NextPage<IItem> = (props) => {
   const { classes } = useStyles();
 
   return (

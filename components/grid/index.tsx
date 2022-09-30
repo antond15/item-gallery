@@ -54,7 +54,7 @@ const breakPoints = [
 
 export const TagsContext = createContext<ITag[]>([]);
 
-const Grid: NextPage<IGridProps> = (props: IGridProps) => {
+const Grid: NextPage<IGridProps> = (props) => {
   const { classes } = useStyles();
   const [items, setItems] = useState(props.items);
 

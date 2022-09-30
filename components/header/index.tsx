@@ -17,7 +17,7 @@ type Props = {
   setQuery?: (query: string) => void;
 };
 
-const Header: NextPage<Props> = (props: Props) => {
+const Header: NextPage<Props> = (props) => {
   const { classes } = useStyles();
 
   return (

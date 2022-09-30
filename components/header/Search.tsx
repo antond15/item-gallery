@@ -20,7 +20,7 @@ type Props = {
   setQuery: (query: string) => void;
 };
 
-const Search: NextPage<Props> = (props: Props) => {
+const Search: NextPage<Props> = (props) => {
   const { classes } = useStyles();
 
   return (

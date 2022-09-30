@@ -15,7 +15,7 @@ type Props = {
   email?: string | null | undefined;
 };
 
-const AvatarGroup: NextPage<Props> = (props: Props) => {
+const AvatarGroup: NextPage<Props> = (props) => {
   const { classes } = useStyles();
 
   return (
