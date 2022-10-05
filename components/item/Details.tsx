@@ -24,7 +24,7 @@ const Details: NextPage<IItem> = (props) => {
           </Title>
           {props.weight && (
             <Text size="xs" color="dimmed">
-              {props.weight}g
+              {props.weight >= 1000 ? `${props.weight * 0.001}kg` : `${props.weight}g`}
             </Text>
           )}
         </Group>
