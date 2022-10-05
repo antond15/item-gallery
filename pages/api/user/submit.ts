@@ -1,7 +1,9 @@
+// Submit item request
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { PrismaClient } from '@prisma/client';
-import { IItem } from '../../interfaces';
+import { IItem } from '../../../interfaces';
 
 const prisma = new PrismaClient();
 

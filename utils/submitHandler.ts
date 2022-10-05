@@ -13,7 +13,7 @@ export const submit = async (body: ISubmit, clearForm: () => void) => {
     disallowClose: true,
   });
 
-  const response = await fetch('/api/submit', {
+  const response = await fetch('/api/user/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),

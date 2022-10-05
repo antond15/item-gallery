@@ -12,7 +12,7 @@ export const reject = async (id: number, removeRequest: (id: number) => void) =>
     disallowClose: true,
   });
 
-  const response = await fetch('/api/request/reject', {
+  const response = await fetch('/api/admin/reject', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id }),

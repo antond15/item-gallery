@@ -12,7 +12,7 @@ export const accept = async (body: any, removeRequest: (id: number) => void) => 
     disallowClose: true,
   });
 
-  const response = await fetch('/api/request/accept', {
+  const response = await fetch('/api/admin/accept', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
