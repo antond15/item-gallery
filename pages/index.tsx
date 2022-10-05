@@ -37,6 +37,5 @@ export const getStaticProps = async () => {
       items,
       tags,
     },
-    revalidate: 3600, // 60 minut
   };
 };

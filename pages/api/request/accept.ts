@@ -43,6 +43,7 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ message: 'Internal server error' });
   }
 
+  await res.revalidate('/');
   return res.status(200).json({ message: 'OK' });
 };
 
