@@ -3,9 +3,9 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 import { NextLink } from '@mantine/next';
 import { Button, Menu } from '@mantine/core';
 import { FaPlus, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-import AvatarGroup from './AvatarGroup';
+import ProfileGroup from './ProfileGroup';
 
-const AuthButton: NextPage = () => {
+const Profile: NextPage = () => {
   const { data: session } = useSession();
 
   return (
@@ -13,7 +13,7 @@ const AuthButton: NextPage = () => {
       <Menu trigger="hover">
         <Menu.Target>
           <div>
-            <AvatarGroup {...session.user} />
+            <ProfileGroup {...session.user} />
           </div>
         </Menu.Target>
         <Menu.Dropdown>
@@ -43,4 +43,4 @@ const AuthButton: NextPage = () => {
   );
 };
 
-export default AuthButton;
+export default Profile;

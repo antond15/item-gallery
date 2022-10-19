@@ -10,12 +10,12 @@ const useStyles = createStyles({
 });
 
 type Props = {
-  image?: string | null | undefined;
-  name?: string | null | undefined;
-  email?: string | null | undefined;
+  image?: string | null;
+  name?: string | null;
+  email?: string | null;
 };
 
-const AvatarGroup: NextPage<Props> = (props) => {
+const ProfileGroup: NextPage<Props> = (props) => {
   const { classes } = useStyles();
 
   return (
@@ -35,4 +35,4 @@ const AvatarGroup: NextPage<Props> = (props) => {
   );
 };
 
-export default AvatarGroup;
+export default ProfileGroup;

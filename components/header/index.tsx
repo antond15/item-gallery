@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { createStyles, Group, Avatar } from '@mantine/core';
-import AuthButton from '../auth/AuthButton';
+import Profile from '../profile';
 import Search from './Search';
 
 const useStyles = createStyles((theme) => ({
@@ -32,7 +32,7 @@ const Header: NextPage<Props> = (props) => {
         />
         {props.setQuery && <Search query={props.query} setQuery={props.setQuery} />}
       </Group>
-      <AuthButton />
+      <Profile />
     </Group>
   );
 };
