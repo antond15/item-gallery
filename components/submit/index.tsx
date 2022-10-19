@@ -50,8 +50,8 @@ const SubmitForm: NextPage = () => {
       label: '',
       description: '',
       image: '',
-      tags: [],
-      weight: Number,
+      tags: [] as number[],
+      weight: undefined,
     },
     // Validate basic stuff like 'required' or 'min length' this way because of the UI
     validate: {

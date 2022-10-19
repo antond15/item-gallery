@@ -19,6 +19,7 @@
     "@mantine/notifications": "^5.4.1",
     "@next-auth/prisma-adapter": "^1.0.4",
     "@prisma/client": "^4.4.0",
+    "ajv": "^8.11.0",
     "next": "12.2.5",
     "next-auth": "^4.12.2",
     "react": "18.2.0",

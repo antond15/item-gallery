@@ -3,7 +3,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { PrismaClient } from '@prisma/client';
-import { IItem } from '../../../interfaces';
+import validate from '../../../validation/schemas/submit';
+import { ISubmit } from '../../../interfaces';
 
 const prisma = new PrismaClient();
 
@@ -12,8 +13,8 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const data: IItem = req.body;
-  if (!data || typeof data !== 'object' || !data.name || !data.label || !data.image) {
+  const data: ISubmit = req.body;
+  if (!validate(data)) {
     return res.status(400).json({ message: 'Bad request' });
   }
 

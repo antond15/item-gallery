@@ -3,6 +3,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { PrismaClient } from '@prisma/client';
+import validate from '../../../validation/schemas/reject';
 
 const prisma = new PrismaClient();
 
@@ -12,7 +13,7 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const data = req.body;
-  if (!data || typeof data !== 'object' || !data.id) {
+  if (!validate(data)) {
     return res.status(400).json({ message: 'Bad request' });
   }
 
