@@ -18,8 +18,7 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const token = await getToken({ req });
-  const admins = process.env.ADMINS?.split(', ');
-  if (!token?.email || !admins?.includes(token.email)) {
+  if (!token?.isAdmin) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
