@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import ImageHint from './ImageHint';
-import { submit } from '../../utils/submitHandler';
+import { submit } from '@utils/submitHandler';
 import { images } from '../../next.config';
 
 const useStyles = createStyles((theme) => ({

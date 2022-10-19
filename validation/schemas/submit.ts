@@ -1,6 +1,6 @@
 import ajv from '../instance';
 import type { JSONSchemaType } from 'ajv';
-import type { ISubmit } from '../../interfaces';
+import type { ISubmit } from '@interfaces';
 
 const schema: JSONSchemaType<ISubmit> = {
   type: 'object',

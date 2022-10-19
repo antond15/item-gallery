@@ -12,9 +12,9 @@ import {
   ActionIcon,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { accept, reject } from '../../utils/request';
+import { accept, reject } from '@utils/request';
 import { FaCheck, FaTimes } from 'react-icons/fa';
-import { IRequest } from '../../interfaces';
+import { IRequest } from '@interfaces';
 import { images } from '../../next.config';
 
 const useStyles = createStyles((theme) => ({

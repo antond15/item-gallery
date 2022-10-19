@@ -3,8 +3,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { PrismaClient } from '@prisma/client';
-import validate from '../../../validation/schemas/accept';
-import { IRequest } from '../../../interfaces';
+import validate from '@validation/schemas/accept';
+import { IRequest } from '@interfaces';
 
 const prisma = new PrismaClient();
 
