@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { createStyles, Stack, Title, Text, Group } from '@mantine/core';
 import TagList from './TagList';
+import ButtonGroup from './ButtonGroup';
 import type { IItem } from '../../interfaces/item';
 
 const useStyles = createStyles(() => ({
@@ -36,6 +37,8 @@ const Details: NextPage<IItem> = (props) => {
           {props.description}
         </Text>
       )}
+
+      <ButtonGroup image={props.image} />
     </Stack>
   );
 };
