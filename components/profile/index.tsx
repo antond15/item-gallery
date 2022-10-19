@@ -1,11 +1,18 @@
 import type { NextPage } from 'next';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { NextLink } from '@mantine/next';
-import { Button, Menu } from '@mantine/core';
-import { FaPlus, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { createStyles, Button, Menu } from '@mantine/core';
+import { FaPlus, FaGripHorizontal, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import ProfileGroup from './ProfileGroup';
 
+const useStyles = createStyles({
+  link: {
+    lineHeight: 1.15,
+  },
+});
+
 const Profile: NextPage = () => {
+  const { classes } = useStyles();
   const { data: session } = useSession();
 
   return (
@@ -17,14 +24,19 @@ const Profile: NextPage = () => {
           </div>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item
-            icon={<FaPlus />}
-            component={NextLink}
-            href="/submit"
-            style={{ lineHeight: 1.15 }}
-          >
+          <Menu.Item icon={<FaPlus />} component={NextLink} href="/submit" className={classes.link}>
             Add new item
           </Menu.Item>
+          {session.user.isAdmin && (
+            <Menu.Item
+              icon={<FaGripHorizontal />}
+              component={NextLink}
+              href="/dashboard"
+              className={classes.link}
+            >
+              Dashboard
+            </Menu.Item>
+          )}
           <Menu.Item icon={<FaSignOutAlt />} color="red" onClick={() => signOut()}>
             Sign Out
           </Menu.Item>
