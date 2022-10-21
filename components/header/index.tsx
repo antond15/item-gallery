@@ -28,7 +28,7 @@ const Header: NextPage<Props> = (props) => {
           alt="Logo"
           size={36}
           component="a"
-          href="https://www.dejv.it/"
+          href={props.setQuery ? 'https://www.dejv.it/' : '/'}
         />
         {props.setQuery && <Search query={props.query} setQuery={props.setQuery} />}
       </Group>
