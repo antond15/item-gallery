@@ -49,8 +49,8 @@ const Dashboard: NextPage<Props> = (props) => {
       {(requests.length > 0 && (
         <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.scrollArea}>
           <Accordion>
-            {requests.map((request, index) => (
-              <Accordion.Item key={index} value={request.id.toString()}>
+            {requests.map((request) => (
+              <Accordion.Item key={request.id} value={request.id.toString()}>
                 <Accordion.Control>
                   <Group>
                     <Badge color="cyan">{request.id}</Badge>
