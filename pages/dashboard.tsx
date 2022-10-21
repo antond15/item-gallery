@@ -1,6 +1,6 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@db';
 import { getToken } from 'next-auth/jwt';
 import { IRequest } from '../interfaces';
 import Header from '../components/header';
@@ -37,8 +37,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
-
-  const prisma = new PrismaClient();
 
   const rawRequests = await prisma.itemRequest.findMany();
   const requests: IRequest[] = [];

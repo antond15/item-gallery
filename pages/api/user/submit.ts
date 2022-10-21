@@ -2,11 +2,9 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@db';
 import validate from '@validation/schemas/submit';
 import { ISubmit } from '@interfaces';
-
-const prisma = new PrismaClient();
 
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {

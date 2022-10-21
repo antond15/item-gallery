@@ -20,6 +20,7 @@
       "@interfaces/*": ["interfaces/*"],
       "@interfaces": ["interfaces/index"],
       "@validation/*": ["validation/*"],
+      "@db": ["prisma/instance"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

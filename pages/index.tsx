@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@db';
 import { useState } from 'react';
 import Header from '../components/header';
 import Grid from '../components/grid';
@@ -24,8 +24,6 @@ const Home: NextPage<Props> = (props: Props) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const prisma = new PrismaClient();
-
   const items = await prisma.item.findMany();
 
   const tags: ITag[] = [];
