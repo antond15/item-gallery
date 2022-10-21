@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Group, ActionIcon } from '@mantine/core';
-import { FaSave, FaExternalLinkAlt } from 'react-icons/fa';
+import { MdSave, MdOutlineOpenInNew } from 'react-icons/md';
 
 type Props = {
   image: string;
@@ -10,7 +10,7 @@ const ButtonGroup: NextPage<Props> = (props) => {
   return (
     <Group spacing={4}>
       <ActionIcon component="a" href={props.image} download variant="filled" color="green">
-        <FaSave />
+        <MdSave size={20} />
       </ActionIcon>
       <ActionIcon
         component="a"
@@ -19,7 +19,7 @@ const ButtonGroup: NextPage<Props> = (props) => {
         rel="noreferrer noopener"
         variant="filled"
       >
-        <FaExternalLinkAlt size={14} />
+        <MdOutlineOpenInNew size={20} />
       </ActionIcon>
     </Group>
   );

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useState, useContext } from 'react';
 import { Popover, Button, Stack, Badge } from '@mantine/core';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import { TagsContext } from '../grid/index';
 
 type Props = {
@@ -25,7 +25,8 @@ const TagList: NextPage<Props> = (props) => {
           compact
           onClick={() => itemTags.length > 0 && setIsOpen(!isOpen)}
           rightIcon={
-            itemTags.length > 0 && (isOpen ? <FaAngleUp size={12} /> : <FaAngleDown size={12} />)
+            itemTags.length > 0 &&
+            (isOpen ? <MdExpandLess size={14} /> : <MdExpandMore size={14} />)
           }
         >
           {itemTags.length} {itemTags.length === 1 ? 'tag' : 'tags'}

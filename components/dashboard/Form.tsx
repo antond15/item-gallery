@@ -13,7 +13,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { accept, reject } from '@utils/request';
-import { FaCheck, FaTimes } from 'react-icons/fa';
+import { MdCheck, MdClose } from 'react-icons/md';
 import { IRequest } from '@interfaces';
 import { images } from '../../next.config';
 
@@ -141,7 +141,7 @@ const Form: NextPage<Props> = (props) => {
                 );
               }}
             >
-              <FaCheck />
+              <MdCheck size={20} />
             </ActionIcon>
             <ActionIcon
               color="red"
@@ -150,7 +150,7 @@ const Form: NextPage<Props> = (props) => {
                 reject(props.id, props.removeRequest);
               }}
             >
-              <FaTimes />
+              <MdClose size={20} />
             </ActionIcon>
           </Group>
           <Button type="submit" variant="light" color="cyan" size="xs">
