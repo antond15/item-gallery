@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useState } from 'react';
 import { createStyles, ScrollArea, Accordion, Group, Badge, Title } from '@mantine/core';
 import { IRequest } from '@interfaces';
-import Form from './Form';
+import SubmitForm from '../form';
 
 const useStyles = createStyles((theme) => ({
   scrollArea: {
@@ -25,6 +25,11 @@ const useStyles = createStyles((theme) => ({
       margin: 0,
       marginTop: theme.spacing.xs,
     },
+  },
+  form: {
+    background: theme.colors.dark[7],
+    borderRadius: theme.radius.md,
+    padding: theme.spacing.sm,
   },
   noRequests: {
     userSelect: 'none',
@@ -59,7 +64,14 @@ const Dashboard: NextPage<Props> = (props) => {
                 </Accordion.Control>
 
                 <Accordion.Panel>
-                  <Form {...request} removeRequest={removeRequest} />
+                  {/* <Form {...request} removeRequest={removeRequest} /> */}
+                  <SubmitForm
+                    className={classes.form}
+                    hideInputDescription
+                    initialValues={request}
+                    onSubmit={() => {}}
+                    footerComponent={'footer buttons - todo'}
+                  />
                 </Accordion.Panel>
               </Accordion.Item>
             ))}
