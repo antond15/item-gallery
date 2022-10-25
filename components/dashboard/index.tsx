@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { createStyles, ScrollArea, Accordion, Group, Badge, Title } from '@mantine/core';
+import { createStyles, ScrollArea, Accordion, Title } from '@mantine/core';
 import { IRequest } from '@interfaces';
-import SubmitForm from '../form';
+import AccordionItem from './AccordionItem';
 
 const useStyles = createStyles((theme) => ({
   scrollArea: {
@@ -55,25 +55,12 @@ const Dashboard: NextPage<Props> = (props) => {
         <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.scrollArea}>
           <Accordion>
             {requests.map((request) => (
-              <Accordion.Item key={request.id} value={request.id.toString()}>
-                <Accordion.Control>
-                  <Group>
-                    <Badge color="cyan">{request.id}</Badge>
-                    {request.label}
-                  </Group>
-                </Accordion.Control>
-
-                <Accordion.Panel>
-                  {/* <Form {...request} removeRequest={removeRequest} /> */}
-                  <SubmitForm
-                    className={classes.form}
-                    hideInputDescription
-                    initialValues={request}
-                    onSubmit={() => {}}
-                    footerComponent={'footer buttons - todo'}
-                  />
-                </Accordion.Panel>
-              </Accordion.Item>
+              <AccordionItem
+                key={request.id}
+                className={classes.form}
+                removeRequest={removeRequest}
+                {...request}
+              />
             ))}
           </Accordion>
         </ScrollArea>

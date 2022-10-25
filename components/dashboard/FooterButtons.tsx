@@ -1,26 +1,15 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
 import { Group, Button, ActionIcon } from '@mantine/core';
-import { accept, reject } from '@utils/request';
 import { MdCheck, MdClose } from 'react-icons/md';
-import { IRequest } from '@interfaces';
+import { ISubmit } from '@interfaces';
+import { accept, reject } from '@utils/request';
 
 type Props = {
   removeRequest: (id: number) => void;
-} & IRequest;
+  values: ISubmit & { id: number };
+};
 
 const FooterButtons: NextPage<Props> = (props) => {
-  const initialValues = {
-    name: props.name,
-    label: props.label,
-    description: props.description,
-    image: props.image,
-    tags: props.tags,
-    weight: props.weight,
-  };
-
-  const [values, setValues] = useState(initialValues);
-
   return (
     <Group position="apart">
       <Group spacing="xs">
@@ -28,18 +17,7 @@ const FooterButtons: NextPage<Props> = (props) => {
           color="green"
           variant="light"
           onClick={() => {
-            accept(
-              {
-                id: props.id,
-                name: values.name,
-                label: values.label,
-                description: values.description,
-                image: values.image,
-                tags: values.tags,
-                weight: values.weight,
-              },
-              props.removeRequest
-            );
+            accept(props.values, props.removeRequest);
           }}
         >
           <MdCheck size={20} />
@@ -48,7 +26,7 @@ const FooterButtons: NextPage<Props> = (props) => {
           color="red"
           variant="light"
           onClick={() => {
-            reject(props.id, props.removeRequest);
+            reject(props.values.id, props.removeRequest);
           }}
         >
           <MdClose size={20} />
