@@ -14,7 +14,7 @@ const tags = [
 ];
 
 type Props = {
-  onSubmit: (body: ISubmit, clearForm?: () => void) => void;
+  onSubmit: (body: ISubmit, clearForm: () => void) => void;
   initialValues?: ISubmit;
   footerComponent: React.ReactNode;
   className: string;
