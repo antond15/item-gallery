@@ -28,7 +28,13 @@ export const getStaticProps = async () => {
 
   const tags: ITag[] = [];
   const rawTags = await prisma.tag.findMany();
-  rawTags.map((tag) => (tags[tag.id] = tag));
+  rawTags.map(
+    (tag) =>
+      (tags[tag.id] = {
+        label: tag.label,
+        color: tag.color,
+      })
+  );
 
   return {
     props: {

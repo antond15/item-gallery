@@ -3,20 +3,13 @@ import { Stack, TextInput, Textarea, MultiSelect, NumberInput } from '@mantine/c
 import { useForm } from '@mantine/form';
 import ImageHint from './ImageHint';
 import { images } from 'next.config';
-import { ISubmit } from '@interfaces';
-
-// TODO: fetch from db
-const tags = [
-  { label: 'Food', value: 1 },
-  { label: 'Drinks', value: 2 },
-  { label: 'Consumables', value: 3 },
-  { label: 'Furniture', value: 4 },
-];
+import { ISubmit, ITagCache } from '@interfaces';
 
 type Props = {
   onSubmit: (body: ISubmit, clearForm: () => void) => void;
   initialValues?: ISubmit;
   footerComponent: React.ReactNode;
+  tags: ITagCache[];
   className: string;
   hideInputDescription?: boolean;
 };
@@ -102,7 +95,7 @@ const SubmitForm: NextPage<Props> = (props) => {
           description={
             !props.hideInputDescription && 'Used to categorize items only in this gallery'
           }
-          data={tags}
+          data={props.tags}
           searchable
           nothingFound="Nothing found"
           clearable

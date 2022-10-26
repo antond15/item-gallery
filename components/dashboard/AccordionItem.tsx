@@ -1,13 +1,14 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import { Accordion, Group, Badge } from '@mantine/core';
-import { ISubmit, IRequest } from '@interfaces';
+import { ISubmit, IRequest, ITagCache } from '@interfaces';
 import SubmitForm from '../form';
 import FooterButtons from './FooterButtons';
 
 type Props = {
   className: string;
   removeRequest: (id: number) => void;
+  cachedTags: ITagCache[];
 } & IRequest;
 
 const AccordionItem: NextPage<Props> = (props) => {
@@ -36,6 +37,7 @@ const AccordionItem: NextPage<Props> = (props) => {
           className={props.className}
           hideInputDescription
           initialValues={initialValues}
+          tags={props.cachedTags}
           onSubmit={(values) => setFormValues(values)}
           footerComponent={
             <FooterButtons
