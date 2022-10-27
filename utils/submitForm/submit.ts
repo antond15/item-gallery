@@ -1,5 +1,5 @@
 import { showNotification, updateNotification } from '@mantine/notifications';
-import { ISubmit } from '../interfaces';
+import type { ISubmit } from '@interfaces';
 
 export const submit = async (body: ISubmit, clearForm: () => void) => {
   const notificationId = `submit-${Math.floor(Math.random() * 100)}`;

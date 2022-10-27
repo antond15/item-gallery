@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { createContext, useEffect, useState } from 'react';
 import { createStyles, ScrollArea, SimpleGrid, Title } from '@mantine/core';
-import type { ITag, IGridProps } from '@interfaces';
 import Item from '../item';
+import type { ITag, IGridProps } from '@interfaces';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {

@@ -3,8 +3,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { prisma } from '@db';
+import type { ISubmit } from '@interfaces';
 import validate from '@validation/schemas/submit';
-import { ISubmit } from '@interfaces';
 
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {

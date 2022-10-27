@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { createStyles, Button } from '@mantine/core';
 import SubmitForm from '../form';
 import { ITagCache } from '@interfaces/index';
-import { submit } from '@utils/submitHandler';
+import { submit } from '@utils/submitForm';
 
 const useStyles = createStyles((theme) => ({
   form: {

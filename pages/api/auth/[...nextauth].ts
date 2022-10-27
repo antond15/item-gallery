@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
+import GitHubProvider from 'next-auth/providers/github';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { prisma } from '@db';
-import GitHubProvider from 'next-auth/providers/github';
 
 const admins = process.env.ADMINS?.split(', ');
 const isUserAdmin = (email: string) => admins?.includes(email) ?? false;

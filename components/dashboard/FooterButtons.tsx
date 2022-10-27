@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { Group, Button, ActionIcon } from '@mantine/core';
 import { MdCheck, MdClose } from 'react-icons/md';
-import { ISubmit } from '@interfaces';
-import { accept, reject } from '@utils/request';
+import type { ISubmit } from '@interfaces';
+import { accept, reject } from '@utils/submitForm';
 
 type Props = {
   removeRequest: (id: number) => void;

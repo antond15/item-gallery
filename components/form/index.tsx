@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import { Stack, TextInput, Textarea, MultiSelect, NumberInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import ImageHint from './ImageHint';
+import type { ISubmit, ITagCache } from '@interfaces';
 import { images } from 'next.config';
-import { ISubmit, ITagCache } from '@interfaces';
 
 type Props = {
   onSubmit: (body: ISubmit, clearForm: () => void) => void;

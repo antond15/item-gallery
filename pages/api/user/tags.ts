@@ -2,7 +2,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@db';
-import { ITagCache } from '@interfaces';
+import type { ITagCache } from '@interfaces';
 
 let fetched = false;
 let cachedTags: ITagCache[] = [];

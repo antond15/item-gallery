@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { createStyles, Group, Avatar } from '@mantine/core';
-import Profile from '../profile';
 import Search from './Search';
+import Profile from '../profile';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {

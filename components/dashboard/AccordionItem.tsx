@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import { Accordion, Group, Badge } from '@mantine/core';
-import { ISubmit, IRequest, ITagCache } from '@interfaces';
 import SubmitForm from '../form';
 import FooterButtons from './FooterButtons';
+import type { ISubmit, IRequest, ITagCache } from '@interfaces';
 
 type Props = {
   className: string;

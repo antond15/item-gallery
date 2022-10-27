@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { createStyles, ScrollArea, Accordion, Title } from '@mantine/core';
-import { IRequest, ITagCache } from '@interfaces';
 import AccordionItem from './AccordionItem';
+import type { IRequest, ITagCache } from '@interfaces';
 
 const useStyles = createStyles((theme) => ({
   scrollArea: {

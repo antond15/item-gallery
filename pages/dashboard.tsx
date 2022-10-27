@@ -1,10 +1,10 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { prisma } from '@db';
 import { getToken } from 'next-auth/jwt';
-import { IRequest } from '../interfaces';
+import { prisma } from '@db';
 import Header from '../components/header';
 import Dashboard from '../components/dashboard';
+import type { IRequest } from '@interfaces';
 
 type Props = {
   requests: IRequest[];
