@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 import { SessionProvider } from 'next-auth/react';
 import { MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
           <NotificationsProvider>
             <Component {...pageProps} />
+            <Analytics />
           </NotificationsProvider>
         </MantineProvider>
       </SessionProvider>
