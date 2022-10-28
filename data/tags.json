@@ -1,0 +1,27 @@
+[
+  {
+    "value": 1,
+    "label": "Food",
+    "color": "orange"
+  },
+  {
+    "value": 2,
+    "label": "Drinks",
+    "color": "yellow"
+  },
+  {
+    "value": 3,
+    "label": "Consumables",
+    "color": "gray"
+  },
+  {
+    "value": 4,
+    "label": "Furniture",
+    "color": "blue"
+  },
+  {
+    "value": 6,
+    "label": "By AI",
+    "color": "green"
+  }
+]

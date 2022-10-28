@@ -1,18 +1,31 @@
 import type { NextPage } from 'next';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Popover, Button, Stack, Badge } from '@mantine/core';
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
-import { TagsContext } from '../grid/index';
+import rawTags from '@data/tags.json';
+
+type Tag = {
+  label: string;
+  color: string;
+};
 
 type Props = {
   tags?: number[];
 };
 
+const allTags: Tag[] = [];
+rawTags.map((tag) => {
+  allTags[tag.value] = {
+    label: tag.label,
+    color: tag.color,
+  };
+});
+
 const TagList: NextPage<Props> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const tagData = useContext(TagsContext);
-  const itemTags = props.tags?.filter((tag) => tagData[tag]) || []; // Filter out tags that don't exist
+  // Filter out tags that doesn't exist
+  const tags = props.tags?.filter((tag) => allTags[tag]) || [];
 
   return (
     <Popover opened={isOpen} withArrow>
@@ -23,20 +36,19 @@ const TagList: NextPage<Props> = (props) => {
           variant="light"
           color="cyan"
           compact
-          onClick={() => itemTags.length > 0 && setIsOpen(!isOpen)}
+          onClick={() => tags.length > 0 && setIsOpen(!isOpen)}
           rightIcon={
-            itemTags.length > 0 &&
-            (isOpen ? <MdExpandLess size={14} /> : <MdExpandMore size={14} />)
+            tags.length > 0 && (isOpen ? <MdExpandLess size={14} /> : <MdExpandMore size={14} />)
           }
         >
-          {itemTags.length} {itemTags.length === 1 ? 'tag' : 'tags'}
+          {tags.length} {tags.length === 1 ? 'tag' : 'tags'}
         </Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Stack spacing={4}>
-          {itemTags.map((tag, index) => (
-            <Badge key={index} size="xs" color={tagData[tag].color}>
-              {tagData[tag].label}
+          {tags.map((tag, index) => (
+            <Badge key={index} size="xs" color={allTags[tag].color}>
+              {allTags[tag].label}
             </Badge>
           ))}
         </Stack>

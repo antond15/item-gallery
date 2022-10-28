@@ -2,14 +2,14 @@ import type { NextPage } from 'next';
 import { Stack, TextInput, Textarea, MultiSelect, NumberInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import ImageHint from './ImageHint';
-import type { ISubmit, ITagCache } from '@interfaces';
+import type { ISubmit } from '@interfaces';
 import { images } from 'next.config';
+import tags from '@data/tags.json';
 
 type Props = {
   onSubmit: (body: ISubmit, clearForm: () => void) => void;
   initialValues?: ISubmit;
   footerComponent: React.ReactNode;
-  tags: ITagCache[];
   className: string;
   hideInputDescription?: boolean;
 };
@@ -95,7 +95,7 @@ const SubmitForm: NextPage<Props> = (props) => {
           description={
             !props.hideInputDescription && 'Used to categorize items only in this gallery'
           }
-          data={props.tags}
+          data={tags}
           searchable
           nothingFound="Nothing found"
           clearable

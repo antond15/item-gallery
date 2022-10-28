@@ -65,12 +65,6 @@ model Item {
   weight      Int?
 }
 
-model Tag {
-  id    Int    @id @default(autoincrement())
-  label String @unique
-  color String
-}
-
 model ItemRequest {
   id          Int      @id @default(autoincrement())
   name        String

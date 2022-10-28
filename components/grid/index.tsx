@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createStyles, ScrollArea, SimpleGrid, Title } from '@mantine/core';
 import Item from '../item';
-import type { ITag, IGridProps } from '@interfaces';
+import type { IItem } from '@interfaces';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -52,9 +52,12 @@ const breakPoints = [
   { maxWidth: 530, cols: 3 },
 ];
 
-export const TagsContext = createContext<ITag[]>([]);
+type Props = {
+  items: IItem[];
+  query: string;
+};
 
-const Grid: NextPage<IGridProps> = (props) => {
+const Grid: NextPage<Props> = (props) => {
   const { classes } = useStyles();
   const [items, setItems] = useState(props.items);
 
@@ -70,11 +73,11 @@ const Grid: NextPage<IGridProps> = (props) => {
         <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.scrollArea}>
           <SimpleGrid cols={12} spacing="xs" breakpoints={breakPoints}>
             {(items.length > 0 && (
-              <TagsContext.Provider value={props.tags}>
+              <>
                 {items.map((item, index) => (
                   <Item key={index} {...item} />
                 ))}
-              </TagsContext.Provider>
+              </>
             )) || (
               <>
                 <div style={{ width: '100px' }} />

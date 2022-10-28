@@ -6,6 +6,6 @@ module.exports = {
     domains: ['raw.githubusercontent.com', 'i.imgur.com'],
   },
   eslint: {
-    dirs: ['components', 'interfaces', 'pages', 'prisma', 'theme', 'utils', 'validation'],
+    dirs: ['components', 'data', 'interfaces', 'pages', 'prisma', 'theme', 'utils', 'validation'],
   }
 }

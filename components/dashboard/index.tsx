@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { createStyles, ScrollArea, Accordion, Title } from '@mantine/core';
 import AccordionItem from './AccordionItem';
-import type { IRequest, ITagCache } from '@interfaces';
+import type { IRequest } from '@interfaces';
 
 const useStyles = createStyles((theme) => ({
   scrollArea: {
@@ -49,18 +49,6 @@ const Dashboard: NextPage<Props> = (props) => {
     setRequests(requests.filter((request) => request.id !== id));
   };
 
-  const [tags, setTags] = useState<ITagCache[]>([]);
-
-  useEffect(() => {
-    const fetchTags = async () => {
-      const response = await fetch('/api/user/tags');
-      const data: ITagCache[] = await response.json();
-      setTags(data);
-    };
-
-    fetchTags();
-  }, []);
-
   return (
     <div className={classes.container}>
       {(requests.length > 0 && (
@@ -70,7 +58,6 @@ const Dashboard: NextPage<Props> = (props) => {
               <AccordionItem
                 key={request.id}
                 className={classes.form}
-                cachedTags={tags}
                 removeRequest={removeRequest}
                 {...request}
               />
