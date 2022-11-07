@@ -4,6 +4,8 @@ import { MdSave, MdOpenInNew, MdCode } from 'react-icons/md';
 
 type Props = {
   image: string;
+  isLuaVisible: boolean;
+  toggleLua: () => void;
 };
 
 const ButtonGroup: NextPage<Props> = (props) => {
@@ -27,7 +29,11 @@ const ButtonGroup: NextPage<Props> = (props) => {
         </ActionIcon>
       </Tooltip>
 
-      <Tooltip label="Show inventory data" openDelay={200}>
+      <Tooltip
+        onClick={() => props.toggleLua()}
+        label={`${props.isLuaVisible ? 'Hide' : 'Show'} inventory data`}
+        openDelay={200}
+      >
         <ActionIcon variant="filled" color="orange">
           <MdCode size={20} />
         </ActionIcon>

@@ -1,8 +1,11 @@
 import type { NextPage } from 'next';
 import { createStyles, Stack, Title, Text, Group } from '@mantine/core';
+import { Prism } from '@mantine/prism';
+import { useToggle } from '@mantine/hooks';
 import TagList from './TagList';
 import ButtonGroup from './ButtonGroup';
 import type { IItem } from '@interfaces';
+import getLuaItem from '@utils/getLuaItem';
 
 const useStyles = createStyles(() => ({
   noSelect: {
@@ -15,6 +18,7 @@ const useStyles = createStyles(() => ({
 
 const Details: NextPage<IItem> = (props) => {
   const { classes } = useStyles();
+  const [isLuaVisible, toggleLua] = useToggle();
 
   return (
     <Stack spacing="xs" className={classes.noSelect}>
@@ -33,12 +37,18 @@ const Details: NextPage<IItem> = (props) => {
       </Group>
 
       {props.description && (
-        <Text size="sm" className={classes.textSelect}>
+        <Text className={classes.textSelect} size="sm">
           {props.description}
         </Text>
       )}
 
-      <ButtonGroup image={props.image} />
+      <ButtonGroup image={props.image} isLuaVisible={isLuaVisible} toggleLua={toggleLua} />
+
+      {isLuaVisible && (
+        <Prism className={classes.textSelect} language="python">
+          {getLuaItem(props)}
+        </Prism>
+      )}
     </Stack>
   );
 };
