@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { createStyles, HoverCard, Box, Text } from '@mantine/core';
-import Details from './Details';
+import Details from './hover';
 import type { IItem } from '@interfaces';
 
 const useStyles = createStyles((theme) => ({
