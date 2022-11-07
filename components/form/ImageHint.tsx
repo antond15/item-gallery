@@ -18,7 +18,7 @@ const ImageHint: NextPage<Props> = (props) => {
   return (
     <Group spacing="xs">
       <Text sx={{ lineHeight: 1.2 }}>Must be hosted on an allowed domain</Text>
-      <Tooltip label={ImageList} color="gray" sx={{ padding: 3 }}>
+      <Tooltip label={ImageList} position="top" sx={{ padding: 3 }}>
         <ActionIcon size={14} variant="transparent" color="dark">
           <FaQuestionCircle />
         </ActionIcon>

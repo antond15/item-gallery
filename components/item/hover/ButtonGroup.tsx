@@ -9,13 +9,13 @@ type Props = {
 const ButtonGroup: NextPage<Props> = (props) => {
   return (
     <Group spacing={4}>
-      <Tooltip label="Download image" color="gray" position="bottom" openDelay={200} withArrow>
+      <Tooltip label="Download image" openDelay={200}>
         <ActionIcon component="a" href={props.image} download variant="filled" color="green">
           <MdSave size={20} />
         </ActionIcon>
       </Tooltip>
 
-      <Tooltip label="Open source" color="gray" position="bottom" openDelay={200} withArrow>
+      <Tooltip label="Open source" openDelay={200}>
         <ActionIcon
           component="a"
           href={props.image}
@@ -27,7 +27,7 @@ const ButtonGroup: NextPage<Props> = (props) => {
         </ActionIcon>
       </Tooltip>
 
-      <Tooltip label="Show inventory data" color="gray" position="bottom" openDelay={200} withArrow>
+      <Tooltip label="Show inventory data" openDelay={200}>
         <ActionIcon variant="filled" color="orange">
           <MdCode size={20} />
         </ActionIcon>
