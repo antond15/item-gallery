@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:pscale": "pscale connect item-gallery dev --port 3309",
+    "dev:prisma": "prisma studio",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
