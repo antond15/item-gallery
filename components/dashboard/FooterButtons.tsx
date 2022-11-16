@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Group, Button, ActionIcon } from '@mantine/core';
-import { MdCheck, MdClose } from 'react-icons/md';
+import { IconCheck, IconX } from '@tabler/icons';
 import type { ISubmit } from '@interfaces';
 import { accept, reject } from '@utils/submitForm';
 
@@ -20,7 +20,7 @@ const FooterButtons: NextPage<Props> = (props) => {
             accept(props.values, props.removeRequest);
           }}
         >
-          <MdCheck size={20} />
+          <IconCheck />
         </ActionIcon>
         <ActionIcon
           color="red"
@@ -29,7 +29,7 @@ const FooterButtons: NextPage<Props> = (props) => {
             reject(props.values.id, props.removeRequest);
           }}
         >
-          <MdClose size={20} />
+          <IconX size={20} />
         </ActionIcon>
       </Group>
       <Button type="submit" variant="light" color="cyan" size="xs">

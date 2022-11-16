@@ -12,6 +12,7 @@ specifiers:
   '@mantine/prism': ^5.7.1
   '@next-auth/prisma-adapter': ^1.0.5
   '@prisma/client': ^4.5.0
+  '@tabler/icons': ^1.111.0
   '@types/node': 18.7.14
   '@types/react': 18.0.18
   '@types/react-dom': 18.0.6
@@ -27,7 +28,6 @@ specifiers:
   prisma: ^4.5.0
   react: 18.2.0
   react-dom: 18.2.0
-  react-icons: ^4.6.0
   typescript: 4.8.2
 
 dependencies:
@@ -41,13 +41,13 @@ dependencies:
   '@mantine/prism': 5.7.1_zuzwjqu2bpvvkpc66ml3tmhnfm
   '@next-auth/prisma-adapter': 1.0.5_sgbjtovblxjinwvvcafycbjihi
   '@prisma/client': 4.5.0_prisma@4.5.0
+  '@tabler/icons': 1.111.0_biqbaboplfbrettd7655fr4n2y
   '@vercel/analytics': 0.1.3_react@18.2.0
   ajv: 8.11.0
   next: 12.2.5_qtpcxnaaarbm4ws7ughq6oxfve
   next-auth: 4.14.0_3xcjr4wz26biff45sz3jtokgje
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-icons: 4.6.0_react@18.2.0
 
 devDependencies:
   '@babel/core': 7.19.6
@@ -920,6 +920,21 @@ packages:
     resolution: {integrity: sha512-6JrF+fdUK2zbGpJIlN7G3v966PQjyx/dPt1T9km2wj+EUBqgrxCk3uX4Kct16MIm9gGxfKRcfax2hVf5jvlTzA==}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /@tabler/icons/1.111.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-TZWYiMT5ccqfHxRE0Qtgvl+sGsMbNkrv7cJMt/tm8TN9l/CDXx/o7d8uAwUN+3PAlSFfF5e/rD1bi1WJs2xNIA==}
+    peerDependencies:
+      react: ^16.x || 17.x || 18.x
+      react-dom: ^16.x || 17.x || 18.x
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@types/json5/0.0.29:
@@ -2671,14 +2686,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-icons/4.6.0_react@18.2.0:
-    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
-    peerDependencies:
-      react: '*'
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:

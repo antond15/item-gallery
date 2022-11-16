@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Group, ActionIcon, Tooltip } from '@mantine/core';
-import { MdSave, MdOpenInNew, MdCode } from 'react-icons/md';
+import { IconBraces, IconDeviceFloppy, IconExternalLink } from '@tabler/icons';
 
 type Props = {
   image: string;
@@ -13,7 +13,7 @@ const ButtonGroup: NextPage<Props> = (props) => {
     <Group spacing={4}>
       <Tooltip label="Download image" openDelay={200}>
         <ActionIcon component="a" href={props.image} download variant="filled" color="green">
-          <MdSave size={20} />
+          <IconDeviceFloppy size={20} />
         </ActionIcon>
       </Tooltip>
 
@@ -25,7 +25,7 @@ const ButtonGroup: NextPage<Props> = (props) => {
           rel="noreferrer noopener"
           variant="filled"
         >
-          <MdOpenInNew size={20} />
+          <IconExternalLink size={20} />
         </ActionIcon>
       </Tooltip>
 
@@ -35,7 +35,7 @@ const ButtonGroup: NextPage<Props> = (props) => {
         openDelay={200}
       >
         <ActionIcon variant="filled" color="orange">
-          <MdCode size={20} />
+          <IconBraces size={20} />
         </ActionIcon>
       </Tooltip>
     </Group>

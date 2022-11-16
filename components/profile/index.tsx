@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { NextLink } from '@mantine/next';
 import { createStyles, Button, Menu } from '@mantine/core';
-import { MdAdd, MdDashboard, MdLogout, MdLogin } from 'react-icons/md';
+import { IconLayoutDashboard, IconLogin, IconLogout, IconPlus } from '@tabler/icons';
 import ProfileGroup from './ProfileGroup';
 
 const useStyles = createStyles({
@@ -25,7 +25,7 @@ const Profile: NextPage = () => {
         </Menu.Target>
         <Menu.Dropdown>
           <Menu.Item
-            icon={<MdAdd size={16} />}
+            icon={<IconPlus size={16} />}
             component={NextLink}
             href="/submit"
             className={classes.link}
@@ -34,7 +34,7 @@ const Profile: NextPage = () => {
           </Menu.Item>
           {session.user.isAdmin && (
             <Menu.Item
-              icon={<MdDashboard size={16} />}
+              icon={<IconLayoutDashboard size={16} />}
               component={NextLink}
               href="/dashboard"
               className={classes.link}
@@ -42,7 +42,7 @@ const Profile: NextPage = () => {
               Dashboard
             </Menu.Item>
           )}
-          <Menu.Item icon={<MdLogout size={16} />} color="red" onClick={() => signOut()}>
+          <Menu.Item icon={<IconLogout size={16} />} color="red" onClick={() => signOut()}>
             Sign Out
           </Menu.Item>
         </Menu.Dropdown>
@@ -51,7 +51,7 @@ const Profile: NextPage = () => {
       <Button
         variant="filled"
         color="cyan"
-        leftIcon={<MdLogin size={16} />}
+        leftIcon={<IconLogin size={16} />}
         onClick={() => signIn('github')}
       >
         Sign In

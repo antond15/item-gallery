@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { createStyles, Group, Popover, TextInput, ActionIcon } from '@mantine/core';
-import { MdSearch, MdFilterAlt } from 'react-icons/md';
+import { IconFilter, IconSearch } from '@tabler/icons';
 
 const useStyles = createStyles({
   searchBar: {
@@ -28,11 +28,11 @@ const Search: NextPage<Props> = (props) => {
       <Popover trapFocus withArrow arrowSize={5} arrowOffset={15} position="bottom-start">
         <Popover.Target>
           <ActionIcon variant="filled" size="lg" className={classes.searchIcon}>
-            <MdSearch size={24} />
+            <IconSearch size={20} />
           </ActionIcon>
         </Popover.Target>
 
-        <Popover.Dropdown sx={{ padding: 0 }}>
+        <Popover.Dropdown p={0}>
           <TextInput
             placeholder="Search images..."
             defaultValue={props.query}
@@ -45,11 +45,11 @@ const Search: NextPage<Props> = (props) => {
         placeholder="Search images..."
         variant="filled"
         className={classes.searchBar}
-        icon={<MdSearch size={24} />}
+        icon={<IconSearch size={20} />}
         onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
       />
       <ActionIcon variant="light" color="cyan" size="lg">
-        <MdFilterAlt size={24} />
+        <IconFilter />
       </ActionIcon>
     </Group>
   );

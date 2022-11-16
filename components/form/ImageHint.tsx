@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Code, Group, Text, Tooltip, Stack, ActionIcon } from '@mantine/core';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { IconQuestionMark } from '@tabler/icons';
 
 type Props = {
   domains: string[];
@@ -16,11 +16,11 @@ const ImageHint: NextPage<Props> = (props) => {
   );
 
   return (
-    <Group spacing="xs">
-      <Text sx={{ lineHeight: 1.2 }}>Must be hosted on an allowed domain</Text>
-      <Tooltip label={ImageList} position="top" sx={{ padding: 3 }}>
-        <ActionIcon size={14} variant="transparent" color="dark">
-          <FaQuestionCircle />
+    <Group spacing={5}>
+      <Text lh={1.2}>Must be hosted on an allowed domain</Text>
+      <Tooltip label={ImageList} position="top" p={3}>
+        <ActionIcon size={14} variant="light" color="cyan">
+          <IconQuestionMark stroke={4} />
         </ActionIcon>
       </Tooltip>
     </Group>
