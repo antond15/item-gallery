@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { createStyles, Group, Avatar } from '@mantine/core';
-import Search from './Search';
 import Profile from '../profile';
 
 const useStyles = createStyles((theme) => ({
@@ -13,8 +12,8 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type Props = {
-  query?: string;
-  setQuery?: (query: string) => void;
+  redirect?: string;
+  content?: React.ReactNode;
 };
 
 const Header: NextPage<Props> = (props) => {
@@ -23,14 +22,9 @@ const Header: NextPage<Props> = (props) => {
   return (
     <Group position="apart" className={classes.wrapper}>
       <Group>
-        <Avatar
-          src="./logo.svg"
-          alt="Logo"
-          size={36}
-          component="a"
-          href={props.setQuery ? 'https://www.dejv.it/' : '/'}
-        />
-        {props.setQuery && <Search query={props.query} setQuery={props.setQuery} />}
+        <Avatar src="./logo.svg" alt="Logo" size={36} component="a" href={props.redirect ?? '/'} />
+        {props.content}
+        {/* {props.setQuery && <Search query={props.query} setQuery={props.setQuery} />} */}
       </Group>
       <Profile />
     </Group>
