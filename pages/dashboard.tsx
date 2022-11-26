@@ -2,8 +2,8 @@ import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { getToken } from 'next-auth/jwt';
 import { prisma } from '@db';
-import Header from '../components/header';
-import Dashboard from '../components/dashboard';
+import Header from '@components/header';
+import Dashboard from '@components/dashboard';
 import type { IRequest } from '@interfaces';
 
 type Props = {

@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 import { prisma } from '@db';
 import { useState } from 'react';
-import Header from '../components/header';
-import Search from '../components/grid/Search';
-import Grid from '../components/grid';
-import type { IItem } from '../interfaces';
+import Header from '@components/header';
+import Search from '@components/grid/Search';
+import Grid from '@components/grid';
+import type { IItem } from '@interfaces';
 
 type Props = {
   items: IItem[];
