@@ -12,20 +12,15 @@ const ButtonGroup: NextPage<Props> = (props) => {
   return (
     <Group spacing={4}>
       <Tooltip label="Download image" openDelay={200}>
-        <ActionIcon component="a" href={props.image} download variant="filled" color="green">
-          <IconDeviceFloppy size={20} />
-        </ActionIcon>
-      </Tooltip>
-
-      <Tooltip label="Open source" openDelay={200}>
         <ActionIcon
           component="a"
           href={props.image}
           target="_blank"
           rel="noreferrer noopener"
           variant="filled"
+          color="green"
         >
-          <IconExternalLink size={20} />
+          <IconDeviceFloppy size={20} />
         </ActionIcon>
       </Tooltip>
 

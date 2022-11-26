@@ -45,7 +45,7 @@ const TagList: NextPage<Props> = (props) => {
           {tags.length} {tags.length === 1 ? 'tag' : 'tags'}
         </Button>
       </Popover.Target>
-      <Popover.Dropdown p={5} bg='dark.4'>
+      <Popover.Dropdown p={5} bg="dark.4">
         <Stack spacing={4}>
           {tags.map((tag, index) => (
             <Badge key={index} size="xs" color={allTags[tag].color}>
