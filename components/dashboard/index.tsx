@@ -5,10 +5,7 @@ import AccordionItem from './AccordionItem';
 import type { IRequest } from '@interfaces';
 
 const useStyles = createStyles((theme) => ({
-  scrollArea: {
-    height: 'calc(100vh - 156px)',
-  },
-  container: {
+  wrapper: {
     background: theme.colors.dark[8],
     borderRadius: theme.radius.md,
     maxWidth: 900,
@@ -20,20 +17,29 @@ const useStyles = createStyles((theme) => ({
       margin: theme.spacing.xl,
     },
 
+    '@media (max-width: 600px)': {
+      padding: theme.spacing.sm,
+    },
+
     '@media (max-width: 450px)': {
       borderRadius: 0,
       margin: 0,
       marginTop: theme.spacing.xs,
+      padding: theme.spacing.sm,
     },
+  },
+  container: {
+    height: 'calc(100vh - 156px)',
   },
   form: {
     background: theme.colors.dark[7],
     borderRadius: theme.radius.md,
     padding: theme.spacing.sm,
   },
-  noRequests: {
-    userSelect: 'none',
-    opacity: 0.3,
+  accordionContent: {
+    padding: 0,
+    paddingTop: '5px',
+    paddingBottom: theme.spacing.sm,
   },
 }));
 
@@ -50,10 +56,14 @@ const Dashboard: NextPage<Props> = (props) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.wrapper}>
       {(requests.length > 0 && (
-        <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.scrollArea}>
-          <Accordion>
+        <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.container}>
+          <Accordion
+            classNames={{
+              content: classes.accordionContent,
+            }}
+          >
             {requests.map((request) => (
               <AccordionItem
                 key={request.id}
@@ -65,7 +75,7 @@ const Dashboard: NextPage<Props> = (props) => {
           </Accordion>
         </ScrollArea>
       )) || (
-        <Title align="center" className={classes.noRequests}>
+        <Title align="center" className={classes.container}>
           No available requests
         </Title>
       )}
