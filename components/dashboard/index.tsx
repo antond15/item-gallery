@@ -58,7 +58,7 @@ const Dashboard: NextPage<Props> = (props) => {
   return (
     <div className={classes.wrapper}>
       {(requests.length > 0 && (
-        <ScrollArea type="hover" scrollbarSize={5} offsetScrollbars className={classes.container}>
+        <ScrollArea type="hover" scrollbarSize={5} className={classes.container}>
           <Accordion
             classNames={{
               content: classes.accordionContent,

@@ -24,7 +24,6 @@ const Header: NextPage<Props> = (props) => {
       <Group>
         <Avatar src="./logo.svg" alt="Logo" size={36} component="a" href={props.redirect ?? '/'} />
         {props.content}
-        {/* {props.setQuery && <Search query={props.query} setQuery={props.setQuery} />} */}
       </Group>
       <Profile />
     </Group>
