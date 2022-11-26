@@ -24,7 +24,7 @@ const Header: NextPage<Props> = (props) => {
     <Group position="apart" className={classes.wrapper}>
       <Group>
         <Avatar
-          src="./header_logo.svg"
+          src="./logo.svg"
           alt="Logo"
           size={36}
           component="a"
