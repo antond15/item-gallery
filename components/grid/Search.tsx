@@ -24,7 +24,7 @@ const Search: NextPage<Props> = (props) => {
   const { classes } = useStyles();
 
   return (
-    <Group spacing={5}>
+    <>
       {/* Phone */}
       <Popover trapFocus withArrow arrowSize={5} arrowOffset={15} position="bottom-start">
         <Popover.Target>
@@ -50,11 +50,7 @@ const Search: NextPage<Props> = (props) => {
         icon={<IconSearch size={20} />}
         onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
       />
-
-      <ActionIcon variant="light" color="cyan" size="lg">
-        <IconFilter />
-      </ActionIcon>
-    </Group>
+    </>
   );
 };
 
