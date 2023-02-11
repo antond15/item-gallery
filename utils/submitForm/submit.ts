@@ -6,8 +6,8 @@ export const submit = async (body: ISubmit, clearForm: () => void) => {
 
   showNotification({
     id: notificationId,
-    title: 'Submitting',
-    message: 'Your submission is being processed.',
+    title: 'Odesílání',
+    message: 'Váše žádost se zpracovává.',
     loading: true,
     autoClose: false,
     disallowClose: true,
@@ -24,16 +24,16 @@ export const submit = async (body: ISubmit, clearForm: () => void) => {
 
     updateNotification({
       id: notificationId,
-      title: 'Successfully submitted',
-      message: 'Your item submission has been successfully sent to the review team.',
+      title: 'Úspěšně odesláno',
+      message: 'Vaše žádost byla úspěšně odeslána.',
       color: 'green',
       autoClose: 10000,
     });
   } else {
     updateNotification({
       id: notificationId,
-      title: 'Something bad happened',
-      message: 'Try again later or ask for help at our Discord server.',
+      title: 'Stalo se něco neočekávaného',
+      message: 'Zkuste to později.',
       color: 'red',
       autoClose: false,
     });

@@ -33,7 +33,7 @@ const SubmitPage: NextPage = () => {
       footerComponent={
         <div className={classes.buttonWrapper}>
           <Button type="submit" variant="light" color="cyan" size="xs">
-            Submit request
+            Odeslat žádost
           </Button>
         </div>
       }

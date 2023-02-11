@@ -76,7 +76,7 @@ const Dashboard: NextPage<Props> = (props) => {
         </ScrollArea>
       )) || (
         <Title align="center" className={classes.container}>
-          No available requests
+          Žádné dostupné žádosti
         </Title>
       )}
     </div>

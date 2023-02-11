@@ -5,8 +5,8 @@ export const reject = async (id: number, removeRequest: (id: number) => void) =>
 
   showNotification({
     id: notificationId,
-    title: 'Rejecting',
-    message: 'Recording changes to database.',
+    title: 'Ukládání',
+    message: 'Probíhá zaznamenávání změn v databázi.',
     loading: true,
     autoClose: false,
     disallowClose: true,
@@ -23,16 +23,16 @@ export const reject = async (id: number, removeRequest: (id: number) => void) =>
 
     updateNotification({
       id: notificationId,
-      title: 'Rejected',
-      message: `Request #${id} has been successfully rejected.`,
+      title: 'Zamítnuto',
+      message: `Žádost #${id} byla úspěšně zamítnuta.`,
       color: 'green',
       autoClose: 10000,
     });
   } else {
     updateNotification({
       id: notificationId,
-      title: 'Something bad happened',
-      message: 'Try again later. No changes were made.',
+      title: 'Stalo se něco neočekávaného',
+      message: 'Zkuste to později.',
       color: 'red',
       autoClose: false,
     });

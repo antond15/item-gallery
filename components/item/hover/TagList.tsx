@@ -42,7 +42,12 @@ const TagList: NextPage<Props> = (props) => {
             (isOpen ? <IconChevronUp size={12} /> : <IconChevronDown size={12} />)
           }
         >
-          {tags.length} {tags.length === 1 ? 'tag' : 'tags'}
+          {tags.length}{' '}
+          {tags.length === 1
+            ? 'štítek'
+            : tags.length >= 2 && tags.length <= 4
+            ? 'štítky'
+            : 'štítků'}
         </Button>
       </Popover.Target>
       <Popover.Dropdown p={5} bg="dark.4">

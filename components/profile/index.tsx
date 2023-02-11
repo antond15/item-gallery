@@ -30,7 +30,7 @@ const Profile: NextPage = () => {
             href="/submit"
             className={classes.link}
           >
-            Add new item
+            Přidat nový obrázek
           </Menu.Item>
           {session.user.isAdmin && (
             <Menu.Item
@@ -39,11 +39,11 @@ const Profile: NextPage = () => {
               href="/dashboard"
               className={classes.link}
             >
-              Dashboard
+              Administrace
             </Menu.Item>
           )}
           <Menu.Item icon={<IconLogout size={16} />} color="red" onClick={() => signOut()}>
-            Sign Out
+            Odhlásit se
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>
@@ -54,7 +54,7 @@ const Profile: NextPage = () => {
         leftIcon={<IconLogin size={16} />}
         onClick={() => signIn('github')}
       >
-        Sign In
+        Přihlásit se
       </Button>
     )
   );

@@ -83,7 +83,7 @@ const Grid: NextPage<Props> = (props) => {
                 <div style={{ width: '100px' }} />
                 <div className={classes.noResultWrapper}>
                   <Title align="center" className={classes.noResultTitle}>
-                    No results found&nbsp;🙁
+                    Žádný výsledek&nbsp;🙁
                   </Title>
                 </div>
               </>

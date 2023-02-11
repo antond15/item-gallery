@@ -9,8 +9,8 @@ export const accept = async (
 
   showNotification({
     id: notificationId,
-    title: 'Saving',
-    message: 'Recording changes to database.',
+    title: 'Ukládání',
+    message: 'Probíhá zaznamenávání změn v databázi.',
     loading: true,
     autoClose: false,
     disallowClose: true,
@@ -27,16 +27,16 @@ export const accept = async (
 
     updateNotification({
       id: notificationId,
-      title: 'Successfully saved',
-      message: `Request #${values.id} has been successfully saved to database.`,
+      title: 'Úspěšně uloženo',
+      message: `Žádost #${values.id} byla úspěšně uložena.`,
       color: 'green',
       autoClose: 10000,
     });
   } else {
     updateNotification({
       id: notificationId,
-      title: 'Something bad happened',
-      message: 'Try again later. No changes were made.',
+      title: 'Stalo se něco neočekávaného',
+      message: 'Zkuste to později.',
       color: 'red',
       autoClose: false,
     });

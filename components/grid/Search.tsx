@@ -35,7 +35,7 @@ const Search: NextPage<Props> = (props) => {
 
         <Popover.Dropdown p={0}>
           <TextInput
-            placeholder="Search images..."
+            placeholder="Vyhledat obrázky..."
             defaultValue={props.query}
             onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
           />
@@ -45,7 +45,7 @@ const Search: NextPage<Props> = (props) => {
       {/* Desktop */}
       <TextInput
         className={classes.searchBar}
-        placeholder="Search images..."
+        placeholder="Vyhledat obrázky..."
         variant="filled"
         icon={<IconSearch size={20} />}
         onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}

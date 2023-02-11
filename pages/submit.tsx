@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Item Gallery | Submit</title>
+        <title>Galerie | Nový obrázek</title>
       </Head>
 
       <Header />

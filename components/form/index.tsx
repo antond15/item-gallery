@@ -30,21 +30,22 @@ const SubmitForm: NextPage<Props> = (props) => {
     initialValues: initialValues,
     validate: {
       name: (value) => {
-        if (!value) return 'Name is required';
-        if (value.length < 2) return 'Name must be at least 2 characters long';
+        if (!value) return 'Jméno je povinné';
+        if (value.length < 2) return 'Jméno musí být minimálně 2 znaky dlouhé';
       },
       label: (value) => {
-        if (!value) return 'Label is required';
-        if (value.length < 2) return 'Label must be at least 2 characters long';
+        if (!value) return 'Název je povinný';
+        if (value.length < 2) return 'Název musí být minimálně 2 znaky dlouhý';
       },
       image: (value) => {
-        if (!value) return 'Image is required';
+        if (!value) return 'Obrázek je povinný';
 
         try {
           const hostname = new URL(value).hostname;
-          if (!allowedDomains.includes(hostname)) return 'Image must be hosted on a valid host';
+          if (!allowedDomains.includes(hostname))
+            return 'Obrázek musí být umístěn na povolené doméně';
         } catch (error) {
-          return 'Image must be a valid URL';
+          return 'Obrázek musí mít platnou URL adresu';
         }
       },
     },
@@ -57,25 +58,27 @@ const SubmitForm: NextPage<Props> = (props) => {
     >
       <Stack spacing="xs">
         <TextInput
-          label="Name"
-          placeholder="bandage"
-          description={!props.hideInputDescription && 'Name of the item used in-game'}
+          label="Jméno"
+          placeholder="obvaz"
+          description={!props.hideInputDescription && 'Jméno předmětu ve hře'}
           withAsterisk
           maxLength={25}
           {...form.getInputProps('name')}
         />
         <TextInput
-          label="Label"
-          placeholder="Bandage"
-          description={!props.hideInputDescription && 'Label visible to players in the inventory'}
+          label="Název"
+          placeholder="Obvaz"
+          description={
+            !props.hideInputDescription && 'Název předmětu viditelný v hráčském inventáři'
+          }
           withAsterisk
           maxLength={50}
           {...form.getInputProps('label')}
         />
         <Textarea
-          label="Description"
-          placeholder="Bandage is a piece of cloth used to bind or stitch wounds or injuries."
-          description={!props.hideInputDescription && 'Brief and general description of the item'}
+          label="Popisek"
+          placeholder="Obvaz je kus látky, který se používá k obvázání ran nebo zranění."
+          description={!props.hideInputDescription && 'Stručný a obecný popis předmětu'}
           maxLength={500}
           autosize
           minRows={2}
@@ -83,30 +86,30 @@ const SubmitForm: NextPage<Props> = (props) => {
           {...form.getInputProps('description')}
         />
         <TextInput
-          label="Image URL"
+          label="URL obrázku"
           placeholder="https://i.imgur.com/QjH6wOP.png"
           description={!props.hideInputDescription && <ImageHint domains={allowedDomains} />}
           withAsterisk
           {...form.getInputProps('image')}
         />
         <MultiSelect
-          label="Tags"
-          placeholder="Select tags that suits this item"
+          label="Štítky"
+          placeholder="Vyberte štítky, které se hodí k tomuto předmětu"
           description={
-            !props.hideInputDescription && 'Used to categorize items only in this gallery'
+            !props.hideInputDescription && 'Slouží ke kategorizaci předmětů v této galerii'
           }
           data={tags as any}
           searchable
-          nothingFound="Nothing found"
+          nothingFound="Nic nenalezeno"
           clearable
           clearButtonLabel="Clear selection"
           {...form.getInputProps('tags')}
         />
         <NumberInput
-          label="Weight"
+          label="Hmotnost"
           placeholder="50"
           description={
-            !props.hideInputDescription && 'Possible weight of one piece of the item (in grams)'
+            !props.hideInputDescription && 'Přibližná hmotnost jednoho kusu předmětu (v gramech)'
           }
           min={0}
           {...form.getInputProps('weight')}

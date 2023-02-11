@@ -17,7 +17,7 @@ const ImageHint: NextPage<Props> = (props) => {
 
   return (
     <Group spacing={5}>
-      <Text lh={1.2}>Must be hosted on an allowed domain</Text>
+      <Text lh={1.2}>Musí být umístěn na povolené doméně</Text>
       <Tooltip label={ImageList} position="top" p={3}>
         <ActionIcon size={14} variant="light" color="cyan">
           <IconQuestionMark stroke={4} />

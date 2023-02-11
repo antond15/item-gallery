@@ -14,7 +14,7 @@ const Home: NextPage<Props> = (props) => {
   return (
     <>
       <Head>
-        <title>Item Gallery | Dashboard</title>
+        <title>Galerie | Administrace</title>
       </Head>
 
       <Header />

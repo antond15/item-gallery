@@ -1,27 +1,22 @@
 [
   {
     "value": 1,
-    "label": "Food",
+    "label": "Jídlo",
     "color": "orange"
   },
   {
     "value": 2,
-    "label": "Drinks",
+    "label": "Pití",
     "color": "yellow"
   },
   {
     "value": 3,
-    "label": "Consumables",
+    "label": "Potraviny",
     "color": "gray"
   },
   {
     "value": 4,
-    "label": "Furniture",
+    "label": "Nábytek",
     "color": "blue"
-  },
-  {
-    "value": 6,
-    "label": "By AI",
-    "color": "green"
   }
 ]

@@ -33,7 +33,7 @@ const FooterButtons: NextPage<Props> = (props) => {
         </ActionIcon>
       </Group>
       <Button type="submit" variant="light" color="cyan" size="xs">
-        Apply changes
+        Uložit změny
       </Button>
     </Group>
   );
