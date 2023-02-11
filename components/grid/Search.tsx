@@ -25,9 +25,10 @@ const Search: NextPage<Props> = (props) => {
 
   return (
     <Group spacing={5}>
+      {/* Phone */}
       <Popover trapFocus withArrow arrowSize={5} arrowOffset={15} position="bottom-start">
         <Popover.Target>
-          <ActionIcon variant="filled" size="lg" className={classes.searchIcon}>
+          <ActionIcon className={classes.searchIcon} variant="filled" size="lg">
             <IconSearch size={20} />
           </ActionIcon>
         </Popover.Target>
@@ -41,13 +42,15 @@ const Search: NextPage<Props> = (props) => {
         </Popover.Dropdown>
       </Popover>
 
+      {/* Desktop */}
       <TextInput
+        className={classes.searchBar}
         placeholder="Search images..."
         variant="filled"
-        className={classes.searchBar}
         icon={<IconSearch size={20} />}
         onChange={(e) => props.setQuery(e.currentTarget.value.toLowerCase())}
       />
+
       <ActionIcon variant="light" color="cyan" size="lg">
         <IconFilter />
       </ActionIcon>
