@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { createStyles, Group, Popover, TextInput, ActionIcon } from '@mantine/core';
-import { IconFilter, IconSearch } from '@tabler/icons';
+import { IconFilter, IconSearch } from '@tabler/icons-react';
 
 const useStyles = createStyles({
   searchBar: {

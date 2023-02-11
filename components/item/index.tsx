@@ -29,13 +29,7 @@ const Item: NextPage<IItem> = (props) => {
     <HoverCard withArrow openDelay={250} width="320px">
       <HoverCard.Target>
         <Box className={classes.wrapper}>
-          <Image
-            src={props.image}
-            alt={props.label}
-            width="100px"
-            height="100px"
-            layout="responsive"
-          />
+          <Image src={props.image} alt={props.label} width={100} height={100} />
           <Text align="center" className={classes.label}>
             {props.label}
           </Text>

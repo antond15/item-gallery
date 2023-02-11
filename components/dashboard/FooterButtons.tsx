@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Group, Button, ActionIcon } from '@mantine/core';
-import { IconCheck, IconX } from '@tabler/icons';
+import { IconCheck, IconX } from '@tabler/icons-react';
 import type { ISubmit } from '@interfaces';
 import { accept, reject } from '@utils/submitForm';
 

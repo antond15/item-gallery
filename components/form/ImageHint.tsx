@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Code, Group, Text, Tooltip, Stack, ActionIcon } from '@mantine/core';
-import { IconQuestionMark } from '@tabler/icons';
+import { IconQuestionMark } from '@tabler/icons-react';
 
 type Props = {
   domains: string[];

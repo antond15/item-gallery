@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { NextLink } from '@mantine/next';
 import { createStyles, Button, Menu } from '@mantine/core';
-import { IconLayoutDashboard, IconLogin, IconLogout, IconPlus } from '@tabler/icons';
+import { IconLayoutDashboard, IconLogin, IconLogout, IconPlus } from '@tabler/icons-react';
 import ProfileGroup from './ProfileGroup';
 
 const useStyles = createStyles({
@@ -26,7 +26,7 @@ const Profile: NextPage = () => {
         <Menu.Dropdown>
           <Menu.Item
             icon={<IconPlus size={16} />}
-            component={NextLink}
+            component={Link}
             href="/submit"
             className={classes.link}
           >
@@ -35,7 +35,7 @@ const Profile: NextPage = () => {
           {session.user.isAdmin && (
             <Menu.Item
               icon={<IconLayoutDashboard size={16} />}
-              component={NextLink}
+              component={Link}
               href="/dashboard"
               className={classes.link}
             >

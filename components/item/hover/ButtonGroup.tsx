@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { Group, ActionIcon, Tooltip } from '@mantine/core';
-import { IconBraces, IconDeviceFloppy, IconExternalLink } from '@tabler/icons';
+import { IconBraces, IconDeviceFloppy, IconExternalLink } from '@tabler/icons-react';
 
 type Props = {
   image: string;
