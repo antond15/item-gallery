@@ -95,7 +95,7 @@ const SubmitForm: NextPage<Props> = (props) => {
           description={
             !props.hideInputDescription && 'Used to categorize items only in this gallery'
           }
-          data={tags}
+          data={tags as any}
           searchable
           nothingFound="Nothing found"
           clearable
