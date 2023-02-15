@@ -6,7 +6,7 @@
   },
   {
     "value": 2,
-    "label": "Pití",
+    "label": "Nápoje",
     "color": "yellow"
   },
   {
@@ -16,7 +16,52 @@
   },
   {
     "value": 4,
-    "label": "Hračka",
+    "label": "Hračky",
+    "color": "blue"
+  },
+  {
+    "value": 5,
+    "label": "Hazardní hry",
+    "color": "orange"
+  },
+  {
+    "value": 6,
+    "label": "Nábytek",
+    "color": "orange"
+  },
+  {
+    "value": 7,
+    "label": "Oblečení",
+    "color": "blue"
+  },
+  {
+    "value": 8,
+    "label": "Zdravotnictví",
+    "color": "red"
+  },
+  {
+    "value": 9,
+    "label": "Zdravotnictví",
+    "color": "red"
+  },
+  {
+    "value": 10,
+    "label": "Elektronika",
+    "color": "blue"
+  },
+  {
+    "value": 11,
+    "label": "Dokumenty",
+    "color": "cyan"
+  },
+  {
+    "value": 12,
+    "label": "Auto",
+    "color": "green"
+  },
+  {
+    "value": 13,
+    "label": "Materiály",
     "color": "blue"
   }
 ]
