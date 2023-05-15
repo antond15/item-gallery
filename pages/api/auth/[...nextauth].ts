@@ -1,10 +1,13 @@
+import { get } from '@vercel/edge-config';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { prisma } from '@db';
 
-const admins = process.env.ADMINS?.split(', ');
-const isUserAdmin = (email: string) => admins?.includes(email) ?? false;
+const isUserAdmin = async (email: string) => {
+  const admins: string[] | undefined = await get('admins');
+  return admins?.includes(email) ?? false;
+};
 
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -19,7 +22,7 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token }) {
-      token.isAdmin = isUserAdmin(token.email as string);
+      token.isAdmin = await isUserAdmin(token.email as string);
       return token;
     },
     async session({ session, token }) {
